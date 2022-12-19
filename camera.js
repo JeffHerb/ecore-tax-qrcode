@@ -301,6 +301,7 @@ class CAMERA extends HTMLElement {
                     var constraints = {
                         audio: false,
                         video: {
+                            facingMode: "environment",
                             mandatory: {
                                 minWidth: 1280,
                                 minHeight: 720
