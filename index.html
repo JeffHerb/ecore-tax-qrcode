@@ -130,7 +130,7 @@
 
 				<div class="cui-row emp-button-row">
 					<div class="emp-col-full button-col emp-button-group cui-align-center">
-						<button type="button" class="cui-button-primary" name="EC_BTN_CONTINUE" title="Continue">Continue</button>
+						<button type="button" id="continue" class="cui-button-primary" name="EC_BTN_CONTINUE" title="Continue">Continue</button>
 					</div>
 				</div>	
 				
@@ -206,6 +206,13 @@
 			// Elements in the page that need to be turned into a data store
 			
 			let dQRCodeButton = document.querySelector('#E_SCAN_QR');
+			let dContinue = document.querySelector('#continue');
+
+			dContinue.addEventListener('click', () => {
+
+				window.location = "upload.html";
+
+			})
 
 			dQRCodeButton.addEventListener('click', (evt) => {
 
@@ -219,6 +226,8 @@
 				dNewCamera.setAttribute('mode', 'qr')
 
 				document.body.appendChild(dNewCamera);
+
+				dQRCodeButton.click();
 
 			});
 			

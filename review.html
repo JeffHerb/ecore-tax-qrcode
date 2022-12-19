@@ -134,7 +134,7 @@
 		
 				<div class="cui-row emp-button-row">
 					<div class="emp-col-full button-col emp-button-group cui-align-center">
-						<button class="cui-button-primary" name="EC_BTN_" title="Submit" type="button">Submit</button>
+						<button class="cui-button-primary" name="EC_BTN_" id="SUBMIT" title="Submit" type="button">Submit</button>
 					</div>
 				</div>
 			</form>
@@ -202,6 +202,15 @@
 
 	<script id="require" src="dist/js/main.js"></script>
 	<script type="text/javascript">
+		
+		let dContinue = document.querySelector('#SUBMIT');
+
+		dContinue.addEventListener('click', () => {
+
+			window.location = "confirm.html";
+
+		})
+
 		require(['jquery', 'emp', 'uimockup', 'domReady!'], function($, emp, uiMockup) {
 			// Elements in the page that need to be turned into a data store
 			uiMockup.createPageDataStore(function(results) {

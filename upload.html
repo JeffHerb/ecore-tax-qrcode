@@ -119,7 +119,7 @@
 
 					<div class="cui-row emp-button-row">
 						<div class="emp-col-full button-col emp-button-group cui-align-center">
-							<button name="" class="cui-button-primary" title="Capture Image" type="button">Capture Image</button>
+							<button name="" id="E_CAPTURE" class="cui-button-primary" title="Capture Image" type="button">Capture Image</button>
 						</div>
 					</div>
 				</section>
@@ -196,7 +196,7 @@
 
 				<div class="cui-row emp-button-row">
 					<div class="emp-col-full button-col emp-button-group cui-align-center">
-						<button class="cui-button-primary" name="EC_BTN_CONTINUE" title="Continue" type="button">Continue</button>
+						<button class="cui-button-primary" id="continue" name="EC_BTN_CONTINUE" title="Continue" type="button">Continue</button>
 					</div>
 				</div>
 			</form>
@@ -264,9 +264,37 @@
 	<div class="emp-field-instructions" id="emp-field-instructions">
 		
 	</div>
-
+	<script src="qrcode.js"></script>
+	<script src="camera.js"></script>
 	<script id="require" src="dist/js/main.js"></script>
 	<script type="text/javascript">
+
+		let dPhoto = document.querySelector('#E_CAPTURE');
+		let dContinue = document.querySelector('#continue');
+
+		dContinue.addEventListener('click', () => {
+
+			window.location = "review.html";
+
+		})
+
+		dPhoto.addEventListener('click', (evt) => {
+
+			if (customElements.get('cui-camera') === undefined) {
+				customElements.define('cui-camera', CAMERA);
+			}
+
+			dNewCamera = document.createElement('cui-camera');
+
+			dNewCamera.setAttribute('for', '#E_CAPTURE');
+			dNewCamera.setAttribute('mode', 'photo')
+
+			document.body.appendChild(dNewCamera);
+
+			dPhoto.click();
+
+		});
+
 		require(['jquery', 'emp', 'uimockup', 'domReady!'], function($, emp, uiMockup) {
 			// Elements in the page that need to be turned into a data store
 			uiMockup.createPageDataStore(function(results) {
