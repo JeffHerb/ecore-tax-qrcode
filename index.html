@@ -212,11 +212,9 @@
 
 				window.location = "upload.html";
 
-			})
+			});
 
-			dQRCodeButton.addEventListener('click', (evt) => {
-
-				if (customElements.get('cui-camera') === undefined) {
+			if (customElements.get('cui-camera') === undefined) {
 					customElements.define('cui-camera', CAMERA);
 				}
 
@@ -227,9 +225,13 @@
 
 				document.body.appendChild(dNewCamera);
 
-				dQRCodeButton.click();
+			// dQRCodeButton.addEventListener('click', (evt) => {
 
-			});
+			// 	dNewCamera = document.querySelector('cui-camera');
+
+			// 	dNewCamera
+
+			// });
 			
 			uiMockup.createPageDataStore(function(results) {
 				emp.init();
