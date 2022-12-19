@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html class="external-app emp-orpts-subtheme" lang="en">
+
+<head>
+	<meta content="IE=edge" http-equiv="X-UA-Compatible">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+	<title>Attach Documents</title>
+	<link href="dist/css/main.css" media="all" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+	<!-- ==================== -->
+	<!-- UNIVERSAL HEADER     -->
+	<!-- ==================== -->
+	<div id="header-wrapper">
+		<div class="unav-agency-wrapper">
+			<div class="unav-header">
+				<div class="unav-header-links">
+					<ul>
+						<li>
+							<a href="https://ny.gov/services" target="_blank">Services</a>
+						</li>
+						<li>
+							<a href="https://www.governor.ny.gov/news" target="_blank">News</a>
+						</li>
+						<li>
+							<a href="https://ny.gov/agencies" target="_blank">Government</a>
+						</li>
+						<li>
+							<a href="https://ny.gov/local" target="_blank">Local</a>
+						</li>
+					</ul>
+				</div>
+				<div class="unav-primary-bar">
+					<div class="unav-header-logo">
+						<a href="#"><span class="accessibly-hide-text">New York State Home</span></a>
+					</div>
+					<div class="unav-toggle-arrow">
+						<a href="#" role="button"><span class="accessibly-hide-text">Expand Mobile Universal Menu</span></a>
+					</div>
+				</div>
+			</div>
+			<div class="agency-header">
+				<div class="banner-toggle" id="banner-toggle">
+					<button class="nys-logo banner-button"><span>Toggle New York State Banner</span></button>
+				</div>
+				<div class="agency-title">
+					<a href="#"><span>Department of</span> <span>Taxation and Finance</span></a>
+				</div>
+				<ul class="agency-support-login">
+					<!-- <li><button><span class="label">Test User</span></button></li> -->
+					<li>
+						<button> <span class="support-icon"></span> <span class="label">Get Support</span> </button>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<!-- ==================== -->
+		<!-- GLOBAL HEADER        -->
+		<!-- ==================== -->
+		<header class="emp-global-header external-view oprts-theme">
+			<div class="application-header">
+				<!-- <button class="menu-button"><svg height="20" version="1" viewbox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg">
+						<path d="M1 3h18v3H1zM1 9h18v3H1zM1 15h18v3H1z" fill="#454545"></path>
+					</svg> <span>Menu</span></button> -->
+				<h1 class="application-title">File Upload</h1>
+			</div>
+		</header>
+	</div>
+	<div id="body-wrapper">
+		<main>
+			<!-- ==================== -->
+			<!-- PAGE INFORMATION     -->
+			<!-- ==================== -->
+			<div class="emp-page-info">
+				<!-- ==================== -->
+				<!-- PAGE TITLE           -->
+				<!-- ==================== -->
+				<div class="emp-page-title">
+					<h2>Attach Documents</h2>
+				</div>
+				<!-- ==================== -->
+				<!-- PAGE INSTRUCTIONS    -->
+				<!-- ==================== -->
+				<div class="emp-page-instructions" id="emp-page-instructions">
+					<p>You can attach an image of your document using <em>Capture image</em> or <em>File upload</em>. <em>Capture image</em> will allow you to take and attach a picture using your device's camera. If you already have an image of your document, use <em>File upload</em> to attach that image.<p>
+					<p>Repeat this process until all files are attached; then select <strong>Continue</strong>.</p>
+
+
+				</div>
+
+				<!-- ==================== -->
+				<!-- PAGE LEGEND          -->
+				<!-- ==================== -->
+				<div class="emp-page-legend">
+					<div class="emp-legend">
+						<span class="cui-required"></span>
+						<span>Required field</span>
+					</div>
+				</div>
+			</div>
+
+			<form action="tax.ny.gov" autocomplete="off" method="post">
+				<!-- ==================== -->
+				<!-- PAGE CONTENT         -->
+				<!-- ==================== -->
+				<section>
+					<header>
+						<div class="emp-section-title">
+							<h3>Capture image</h3>
+						</div>
+					</header>
+
+					<div class="emp-section-instructions">
+						<p>Select <strong>Capture Image</strong> to take and attach an image of your document.
+						</p>
+					</div>
+
+					<div class="cui-row emp-button-row">
+						<div class="emp-col-full button-col emp-button-group cui-align-center">
+							<button name="" class="cui-button-primary" title="Capture Image" type="button">Capture Image</button>
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<header>
+						<div class="emp-section-title">
+							<h3>File upload</h3>
+						</div>
+					</header>
+
+					<div class="emp-section-instructions">
+						<p>Select <strong>Browse</strong> to open a window showing the files on your device. Choose the file you wish to attach, then select <strong>Upload File</strong>.</p>
+					</div>					
+					
+					<div class="cui-row">
+						<div class="emp-col-full">
+							<div class="emp-composite emp-search-composite emp-file-upload cui-required">
+								<div class="cui-label"> <label for="EC_FILE_NAME ">File name:</label> </div>
+								<div class="cui-data emp-search">
+									<div class="emp-field">
+										<span class="emp-data emp-file-upload-name">Select a file</span>
+									</div>
+									<div class="emp-field">
+										<button type="button" class="emp-file-upload-button">Browse</button>
+									</div>
+									<input class="cui-hide-from-screen cui-required" name="EC_FILE_NAME " id="EC_FILE_NAME " aria-required="true" type="file">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="cui-row emp-button-row">
+						<div class="emp-col-full button-col emp-button-group cui-align-center">
+							<button name="EC_BTN_UPLOAD_FILE" class="cui-button-primary" title="Upload File" type="button">Upload File</button>
+						</div>
+					</div>
+				</section>
+
+
+				<section>
+					<header>
+						<div class="emp-section-title">
+							<h3>Documents</h3>
+						</div>
+					</header>
+					
+					<div class="emp-table">
+						<table id="document-upload" data-filter="false" data-resize="false" data-sticky="false" data-responsive="false" data-buttonMenu="false">
+							<thead>
+								<tr>
+									<th data-type="alpha">
+										File name
+									</th>
+									<th data-type="alpha">
+										Size
+									</th>
+									<th data-type="button" title="Remove" class="emp-min-width">
+										<span class="cui-hide-from-screen">Remove</span>
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><a href="">File.pdf</a></td>
+									<td>50 KB</td>
+									<td class="emp-min-width">
+										<button type="button" class="emp-icon-delete" id="EC_BTN_REMOVE">Remove</button>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</section>
+
+				<div class="cui-row emp-button-row">
+					<div class="emp-col-full button-col emp-button-group cui-align-center">
+						<button class="cui-button-primary" name="EC_BTN_CONTINUE" title="Continue" type="button">Continue</button>
+					</div>
+				</div>
+			</form>
+		</main>
+	</div>
+	<div id="footer-wrapper">
+		<!-- ==================== -->
+		<!-- GLOBAL FOOTER        -->
+		<!-- ==================== -->
+		<footer class="emp-global-footer orpts-theme">
+			<ul>
+				<li>
+					<a href="https://www.tax.ny.gov/help/tech/accessibility.htm" target="_blank" title="This will open a new window to the Web Site Accessibility page">Accessibility</a>
+				</li>
+				<li>
+					<a href="https://www.tax.ny.gov/help/tech/disclaimer.htm" target="_blank" title="This will open a new window to the Web Site Disclaimer page">Disclaimer</a>
+				</li>
+				<li>
+					<a href="https://www.tax.ny.gov/help/tech/privacy_policy.htm" target="_blank" title="This will open a new window to the Privacy Policy page">Privacy</a>
+				</li>
+				<li>
+					<a href="https://www.tax.ny.gov/help/tech/securesite.htm" target="_blank" title="This will open a new window to the Web Site Security page">Security</a>
+				</li>
+				<li>
+					<a href="https://www.tax.ny.gov/help/tech/copyright.htm" target="_blank" title="This will open a new window to the Copyright page">Copyright</a>
+				</li>
+				<li>
+					<a href="https://www.tax.ny.gov/help/tech/email_phishing.htm" target="_blank" title="This will open a new window to the Email/Phishing page">Email/Phishing</a>
+				</li>
+			</ul>
+		</footer>
+		<!-- ==================== -->
+		<!-- UNIVERSAL FOOTER     -->
+		<!-- ==================== -->
+		<div class="unav-footer">
+			<div class="unav-footer-contents clearfix">
+				<div class="unav-flex-row">
+					<div class="footer-logo clearfix"></div>
+					<div class="footer-links clearfix">
+						<ul>
+							<li>
+								<a href="https://www.ny.gov/agencies">Agencies</a>
+							</li>
+							<li>
+								<a href="https://www.ny.gov/mobileapps">App Directory</a>
+							</li>
+							<li>
+								<a href="https://www.ny.gov/counties">Counties</a>
+							</li>
+							<li>
+								<a href="https://www.ny.gov/events">Events</a>
+							</li>
+							<li>
+								<a href="https://www.ny.gov/programs">Programs</a>
+							</li>
+							<li>
+								<a href="https://www.ny.gov/services">Services</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="emp-field-instructions" id="emp-field-instructions">
+		
+	</div>
+
+	<script id="require" src="dist/js/main.js"></script>
+	<script type="text/javascript">
+		require(['jquery', 'emp', 'uimockup', 'domReady!'], function($, emp, uiMockup) {
+			// Elements in the page that need to be turned into a data store
+			uiMockup.createPageDataStore(function(results) {
+				emp.init();
+			});
+		});
+	</script>
+</body>
+
+</html>

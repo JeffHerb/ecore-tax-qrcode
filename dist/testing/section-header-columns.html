@@ -1,0 +1,560 @@
+<!DOCTYPE HTML>
+<html class="theme-teal">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Empire Template - Core UI</title>
+    <link href="../../dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+    <!--
+    ===============================================================================
+    eMPIRE2 | Empire Template - Core UI
+    - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    Date        Initials  Comments
+
+    ===============================================================================
+-->
+</head>
+<body>
+    <div id="body-wrapper">
+        <!-- Accessibility cues -->
+        <div class="cui-hide-from-screen"> <a href="#nav">Go to navigation</a> <a href="#main">Go to content</a> </div>
+        <!-- ==================== -->
+        <!-- GLOBAL HEADER        -->
+        <!-- ==================== -->
+        <header>
+            <!-- Logo and main menu -->
+            <div class="emp-header-row-first">
+                <div class="emp-header-logo"> Empire </div>
+                <nav id="emp-header-menu-main"> Main Menu </nav>
+                <div id="emp-header-favorites"> &#9734; </div>
+            </div>
+            <!-- Title, notifiers and secondary menu -->
+            <div class="emp-header-row-second">
+                <div class="emp-header-tabset-title">
+                    <button type="button" class="emp-tabset-toggle emp-collapse" title="Show a full/partial tabset view" tabindex="1">Toggle</button>
+                    <h1>Tabset menu title</h1>
+                </div>
+                <ul class="emp-header-links">
+                    <li class="emp-header-employee"><a role="button">Employee</a></li>
+                    <li class="emp-header-preferences"><a role="button">Preferences</a></li>
+                    <li class="emp-header-notifications"><a role="button">Notifications</a></li>
+                    <li class="emp-header-help"><a role="button">Help</a></li>
+                </ul>
+            </div>
+        </header>
+        <!-- ==================== -->
+        <!-- TABSET               -->
+        <!-- ==================== -->
+        <ul class="emp-tabset emp-collapse">
+            <li><a href="#" title="Taxpayer Summary" tabindex="1">TP Sum</a></li>
+            <li><a href="#" title="Search by Name" tabindex="1">Srch by Name</a></li>
+            <li class="emp-selected"><a href="#" title="Name History" tabindex="1">Name History</a></li>
+            <li><a href="#" title="Address Summary" tabindex="1">Address Sum</a></li>
+            <li><a href="#" title="Check Digit" tabindex="1">Check Digit</a></li>
+            <li><a href="#" title="Old ID Search" tabindex="1">Old ID Search</a></li>
+            <li><a href="#" title="Current ID Search" tabindex="1">Current ID Search</a></li>
+            <li><a href="#" title="Multiple 9-Character IDs" tabindex="1">Multi 9-Char ID</a></li>
+            <li><a href="#" title="CT Sub Profile" tabindex="1">CT Sub Profile</a></li>
+            <li><a href="#" title="ST Profile" tabindex="1">ST Profile</a></li>
+            <li><a href="#" title="Multi State" tabindex="1">Multi State</a></li>
+            <li><a href="#" title="Pymt Search" tabindex="1">Pymt Search</a></li>
+            <li><a href="#" title="Trnsfr Return" tabindex="1">Trnsfr Return</a></li>
+            <li><a href="#" title="Transfer In" tabindex="1">Transfer In</a></li>
+            <li><a href="#" title="Transfer In/Out" tabindex="1">Transfer In/Out</a></li>
+            <li><a href="#" title="TFA Details" tabindex="1">TFA Details</a></li>
+            <li><a href="#" title="Events" tabindex="1">Events</a></li>
+            <li><a href="#" title="Correspondence" tabindex="1">Correspondence</a></li>
+        </ul>
+        <!-- ==================== -->
+        <!-- PAGE TITLE           -->
+        <!-- ==================== -->
+        <div class="emp-page-title">
+            <div class="emp-text">
+                <h2>Page title <span>Page mode</span></h2>
+            </div>
+            <ul class="emp-actions">
+                <li>
+                    <button type="button" class="emp-icon-sections-toggle" title="Hide all sections" tabindex="1">Hide all sections</button>
+                </li>
+                <li>
+                    <button type="button" class="emp-icon-info-blocks-toggle-expand" title="Show information for all sections" tabindex="1">Show information for all sections</button>
+                </li>
+                <li>
+                    <button type="button" class="emp-icon-print" title="Print page" tabindex="1">Print page</button>
+                </li>
+            </ul>
+        </div>
+        <!-- ==================== -->
+        <!-- TAXPAYER INFO        -->
+        <!-- ==================== -->
+        <form name="form_tp_info" id="form_tp_info" class="emp-tp-header" action="http://www.tax.ny.gov" method="post">
+            <div class="emp-tp-info">
+                <!-- Main taxpayer -->
+                <div class="emp-tp-info-main">
+                    <div class="cui-row">
+                        <div class="emp-tp-indicators"> <a class="emp-button-send-id" role="button" tabindex="1">Send ID</a> <span class="emp-indicator-1" title="Bankruptcy exists" alt="B">Bankruptcy exists</span> <span class="emp-indicator-1" title="Identity theft" alt="I">Identity theft</span>
+                            <button type="button" class="emp-icon-legal-rep" title="View legal representative" tabindex="1">View legal representative</button>
+                            <button type="button" class="emp-icon-add-event" title="Popup add event" tabindex="1">Popup add event</button>
+                        </div>
+                    </div>
+                    <div class="cui-row">
+                        <div class="emp-tp-id"> <span class="emp-data">123-45-6789 (IND)</span> </div>
+                    </div>
+                    <div class="cui-row">
+                        <div class="emp-tp-name"> <span class="emp-data">John H. Smith</span> </div>
+                    </div>
+                    <div class="cui-row">
+                        <div class="emp-tp-address"> <span class="emp-data">1943 Crossing Stone Ct., Albany, NY 12227</span>
+                            <button type="button" class="emp-icon-diff-mail" title="Mailing address is different" tabindex="1">Mailing address is different</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Joint taxpayer -->
+                <div class="emp-tp-info-joint">
+                    <div class="cui-row">
+                        <div class="emp-tp-indicators">
+                            <span class="emp-indicator emp-federal-data" title="Federal Association" alt="Fed">Federal Association</span>
+                            <span class="emp-indicator-1" title="Bankruptcy exists" alt="B">Bankruptcy exists</span>
+                            <span class="emp-indicator-1" title="Identity theft" alt="I">Identity theft</span>
+                            <button type="button" class="emp-icon-data-joint" title="Popup Data for Joint Taxpayer" tabindex="1">Popup Data for Joint Taxpayer</button>
+                            <button type="button" class="emp-icon-list-joint" title="View Joint Taxpayer List" tabindex="1">View Joint Taxpayer List</button>
+                            <button type="button" class="emp-icon-legal-rep" title="View legal representative" tabindex="1">View legal representative</button>
+                        </div>
+                    </div>
+                    <div class="cui-row">
+                        <div class="emp-tp-joint-id">
+                            <div class="emp-field">
+                                <div class="cui-label"> <span class="emp-label">Associated ID:</span> </div>
+                                <div class="cui-data"> <span class="emp-data">234-56-7890 (IND)</span> </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cui-row">
+                        <div class="emp-tp-joint-name">
+                            <div class="emp-field">
+                                <div class="cui-label"> <span class="emp-label">Associated Name:</span> </div>
+                                <div class="cui-data"> <span class="emp-data">Jane M. Johnson-Smith</span> </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="emp-tp-header-buttons">
+                <button class="emp-button-switch" tabindex="1">Switch</button>
+            </div>
+        </form>
+        <!-- ==================== -->
+        <!-- Workflow             -->
+        <!-- ==================== -->
+        <form name="form_workflow" id="form_workflow" class="emp-workflow" action="http://www.tax.ny.gov" method="post">
+            <ul class="emp-workflow-options">
+                <li>
+                    <button id="workflow_next" type="button" class="emp-icon-workflow-item-next" title="Get next workitem" tabindex="1">Get next workitem</button>
+                </li>
+                <li>
+                    <button id="workflow_view_comments" type="button" class="emp-icon-workflow-item-comments" title="View comments" tabindex="1">View comments</button>
+                </li>
+                <li>
+                    <button id="workflow_work_management" type="button" class="emp-icon-workflow-item-work-management" title="Go to work management" tabindex="1">Go to work management</button>
+                </li>
+            </ul>
+            <div class="emp-workflow-actions">
+                <label for="workflow_actions" class="cui-hide-from-screen">Workflow action</label>
+                <select id="workflow_actions" tabindex="1">
+                    <option>Workflow actions</option>
+                    <option>Workflow actions 12345</option>
+                </select>
+                <button name="E_BTN_workFlow_go" tabindex="1">Go</button>
+            </div>
+        </form>
+        <!-- ==================== -->
+        <!-- SEARCH BOX           -->
+        <!-- ==================== -->
+        <!-- Use class="emp-search-box emp-collapse" to hide search box -->
+        <form name="form_search" id="form_search" class="emp-search-box" action="http://www.tax.ny.gov" method="post">
+            <div class="emp-search-fields">
+                <div class="cui-row">
+                    <div class="emp-search-box-field">
+                        <div class="emp-field">
+                            <div class="cui-label">
+                                <label for="HEADER_ID_TYPE" class="cui-hide-from-screen">Header ID type</label>
+                                <select id="HEADER_ID_TYPE" tabindex="1">
+                                    <option value="NC" selected="selected">9 Character ID</option>
+                                    <option value="BN">Business Name</option>
+                                    <option value="BT">Business Taxpayer ID</option>
+                                    <option value="IN">Individual Name</option>
+                                    <option value="IT">Individual Taxpayer ID</option>
+                                    <option value="MA">Mail Agent ID</option>
+                                    <option value="RD">Representative ID</option>
+                                    <option value="RN">Representative Name</option>
+                                </select>
+                            </div>
+                            <div class="cui-data">
+                                <label for="HEADER_ID_NUMBER" class="cui-hide-from-screen">Header ID number</label>
+                                <input type="text" id="HEADER_ID_NUMBER" value="" size="20" maxlength="50" tabindex="1">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cui-row">
+                    <div class="emp-search-box-field">
+                        <div class="emp-field cui-required">
+                            <div class="cui-label">
+                                <label for="S_VIEW">View:</label>
+                            </div>
+                            <div class="cui-data">
+                                <select id="S_VIEW" tabindex="1" sel="0" aria-required="true">
+                                    <option>ALL</option>
+                                    <option selected="selected">NON-REVERSED</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="emp-search-box-field">
+                        <div class="emp-field cui-required">
+                            <div class="cui-label"> <span class="emp-label">Tax Type:</span> </div>
+                            <div class="cui-data"> <span id="S_TAX_TYPE_TEXT" class="emp-data">CORP</span>
+                                <button type="button" id="S_POPUP" class="emp-icon-tax-type" title="Tax type selection popup" tabindex="1">Tax type selection popup</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="emp-search-box-field">
+                        <div class="emp-field">
+                            <div class="cui-label"> <span class="emp-label">Tax Sub Type Desc:</span> </div>
+                            <div class="cui-data"> <span id="S_TAX_SUB_TYPE_DESC" class="emp-data">CT-182 Adl Tax Oil Co.</span> </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cui-row">
+                    <div class="emp-search-box-field">
+                        <div class="emp-field cui-required">
+                            <div class="cui-label">
+                                <label for="S_LIABILITY_PERIOD_BEGIN">Liability Period Begin:</label>
+                            </div>
+                            <div class="cui-data">
+                                <input type="text" id="S_LIABILITY_PERIOD_BEGIN" class="emp-date" value="01/01/2007" size="13" maxlength="10" tabindex="1">
+                                <button type="button" id="dp_S_LIABILITY_PERIOD_BEGIN" class="cui-icon cui-c-datepicker" title="Date picker" tabindex="1">Date picker</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="emp-search-box-field">
+                        <div class="emp-field cui-required">
+                            <div class="cui-label">
+                                <label for="S_LIABILITY_PERIOD_END">Liability Period End:</label>
+                            </div>
+                            <div class="cui-data">
+                                <input type="text" id="S_LIABILITY_PERIOD_END" class="emp-date" aria-required="true" value="01/01/2007" size="13" maxlength="10" tabindex="1">
+                                <button type="button" id="dp_S_LIABILITY_PERIOD_END" class="cui-icon cui-c-datepicker" title="Date picker" tabindex="1">Date picker</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Buttons -->
+            <div class="emp-search-buttons">
+                <div class="cui-row">
+                    <button type="submit" class="cui-button-primary emp-search-retrieve" tabindex="1">Retrieve</button>
+                </div>
+                <div class="cui-row">
+                    <button type="button" class="emp-button-search-clear" title="Leave ID and clear the rest" tabindex="1">Clear</button>
+                    <button type="button" class="emp-button-search-clear-all" title="Clear all fields in search box" tabindex="1">All</button>
+                </div>
+                <div class="cui-row"> <a role="button" class="emp-button-get-id" name="E_BTN_get_id" tabindex="1">Get ID</a> </div>
+            </div>
+            <button type="button" class="emp-search-toggle" title="Hide the search box" tabindex="1">Hide the search box</button>
+        </form>
+        <!-- ==================== -->
+        <!-- PAGE MESSAGES        -->
+        <!-- ==================== -->
+        <ul class="cui-messages emp-messages cui-hidden">
+            <li class="cui-error">
+                <p>Error message. This is a long error message so that it wraps and I can make sure it looks ok and better than its equivalent on empire 1.0. Many errors can be displayed at once. So is this enough text to make it wrap? I guess it depends on your browser width? Well I think this is more than enough. If not, nice monitor!</p>
+            </li>
+            <li class="cui-warning">
+                <p>Warning message. Displays information about certain things that need to be considered before continuing.</p>
+            </li>
+            <li class="cui-informational">
+                <p>Informational message. Provide some information to assist in making the right decisions or something.</p>
+            </li>
+            <li class="cui-success">
+                <p>Successful message. Something {noun} was successfully something {verb}. Most of the times only one of this type of message shows per page submission.</p>
+            </li>
+        </ul>
+        <!-- ####################### -->
+        <!-- DEVELOPER'S CODE (JSP)  -->
+        <!-- ####################### -->
+        <main role="main">
+            <div class="emp-page-info">
+                <!-- ==================== -->
+                <!-- AS OF                -->
+                <!-- ==================== -->
+                <div class="emp-asof">
+                    <form name="form_asof" id="form_asof" class="emp-asof-col" action="http://www.tax.ny.gov" method="post">
+                        <button type="button" class="emp-asof-prev" title="Previous history" tabindex="1">Previous history</button>
+                        <div id="E_AS_OF">As of:
+                            <time>01/01/2012 12:00:00 AM</time>
+                        </div>
+                        <button type="button" class="emp-asof-next" title="Next history" tabindex="1">Next history</button>
+                    </form>
+                </div>
+                <!-- ==================== -->
+                <!-- INDICATORS           -->
+                <!-- ==================== -->
+                <ul class="emp-indicators">
+                    <li><span title="OIC whatever it stands for" tabindex="1">OIC</span></li>
+                    <li><a href="#" title="Combat Zone" id="notifier_1" target="_blank" tabindex="1">Combat Zone</a></li>
+                    <li><span title="Unavailable for COD..." tabindex="1">Unavailable for COD</span></li>
+                    <li><a href="#" target="_blank" id="notifier_2" title="Multi Locations" tabindex="1">Multi Locations</a></li>
+                </ul>
+            </div>
+            <!-- ==================== -->
+            <!-- PAGE CONTENT         -->
+            <!-- ==================== -->
+            <form name="form_content" id="form_content" action="http://www.tax.ny.gov" method="post" role="main">
+                <!-- 1 -->
+                <section>
+                    <header class="emp-flex-header">
+                        <div class="emp-section-title cui-col-medium-4">
+                            <h3>Section elements
+              <button type="button" class="emp-icon-view-image" title="View image" tabindex="1">Section Title Button</button>
+            </h3>
+                        </div>
+                        <div class="emp-section-field cui-col-medium-2">
+                            <div class="emp-field">
+                                <div class="cui-label">
+                                    <span class="cui-hide-from-screen">Status:</span>
+                                </div>
+                                <div class="cui-data">
+                                    <span class="emp-data">Active</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="emp-section-field cui-col-medium-3">
+                            <div class="emp-field">
+                                <div class="cui-data-left">
+                                    <div class="cui-data">
+                                        <i class="emp-icon-redcheck" title="review-details"></i>
+                                    </div>
+                                    <div class="cui-label">
+                                        <span class="emp-label">
+                        Associations
+                    </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="emp-section-field cui-col-medium-3">
+                        </div>
+                        <div class="emp-section-controls">
+                            <ul>
+                                <li>
+                                    <button type="button" class="emp-icon-section-toggle-collapse" title="Hide section" tabindex="1">Hide section</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </header>
+                </section>
+                <!-- 2 -->
+                <section>
+                    <header class="emp-flex-header">
+                        <div class="emp-section-title cui-col-medium-4">
+                            <h3>Section elements
+              <button type="button" class="emp-icon-view-image" title="View image" tabindex="1">Section Title Button</button>
+            </h3>
+                        </div>
+                        <div class="emp-section-field cui-col-medium-2">
+                            <div class="emp-field">
+                                <div class="cui-label">
+                                    <span class="cui-hide-from-screen">Status:</span>
+                                </div>
+                                <div class="cui-data">
+                                    <span class="emp-data">Active</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="emp-section-field cui-col-medium-3">
+                            <div class="emp-field">
+                                <div class="cui-data-left">
+                                    <div class="cui-data">
+                                        <i class="emp-icon-redcheck" title="review-details"></i>
+                                    </div>
+                                    <div class="cui-label">
+                                        <span class="emp-label">
+                        Associations
+                    </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="emp-section-field cui-col-medium-3">
+                            <div class="emp-field">
+                                <div class="cui-label">
+                                    <span class="cui-hide-from-screen">Status:</span>
+                                </div>
+                                <div class="cui-data">
+                                    <span class="emp-data">EFT - Active</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="emp-section-controls">
+                            <ul>
+                                <li>
+                                    <button type="button" class="emp-icon-section-toggle-collapse" title="Hide section" tabindex="1">Hide section</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </header>
+                </section>
+                <!-- 3 -->
+                <section>
+                    <header class="emp-flex-header">
+                        <div class="emp-section-title cui-col-medium-4">
+                            <h3>Section elements
+              <button type="button" class="emp-icon-view-image" title="View image" tabindex="1">Section Title Button</button>
+            </h3>
+                        </div>
+                        <div class="emp-section-field cui-col-medium-2">
+                            <div class="emp-field">
+                                <div class="cui-label">
+                                    <span class="cui-hide-from-screen">Status:</span>
+                                </div>
+                                <div class="cui-data">
+                                    <span class="emp-data">Active</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="emp-section-field cui-col-medium-3">
+                            <div class="emp-field">
+                                <div class="cui-data-left">
+                                    <div class="cui-data">
+                                        <i class="emp-icon-redcheck" title="review-details"></i>
+                                    </div>
+                                    <div class="cui-label">
+                                        <span class="emp-label">
+                        Associations
+                    </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="emp-section-field cui-col-medium-3">
+                            <div class="emp-field">
+                                <div class="cui-label">
+                                    <span class="cui-hide-from-screen">Status:</span>
+                                </div>
+                                <div class="cui-data">
+                                    <span class="emp-data">EFT - Inactive</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="emp-section-controls">
+                            <ul>
+                                <li>
+                                    <button type="button" class="emp-icon-section-toggle-collapse" title="Hide section" tabindex="1">Hide section</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </header>
+                </section>
+                <!-- 4 -->
+                <section>
+                    <header class="emp-flex-header">
+                        <div class="emp-section-title cui-col-medium-4">
+                            <h3>Section elements
+              <button type="button" class="emp-icon-view-image" title="View image" tabindex="1">Section Title Button</button>
+            </h3>
+                        </div>
+                        <div class="emp-section-field cui-col-medium-2">
+                            <div class="emp-field">
+                                <div class="cui-label">
+                                    <span class="cui-hide-from-screen">Status:</span>
+                                </div>
+                                <div class="cui-data">
+                                    <span class="emp-data">Active</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="emp-section-field cui-col-medium-3">
+                            <div class="emp-field">
+                                <div class="cui-data-left">
+                                    <div class="cui-data">
+                                        <i class="emp-icon-redcheck" title="review-details"></i>
+                                    </div>
+                                    <div class="cui-label">
+                                        <span class="emp-label">
+                        Associations
+                    </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="emp-section-field cui-col-medium-3">
+                        </div>
+                        <div class="emp-section-controls">
+                            <ul>
+                                <li>
+                                    <button type="button" class="emp-icon-section-toggle-collapse" title="Hide section" tabindex="1">Hide section</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </header>
+                </section>
+                <!-- Original Source -->
+                <section>
+                    <header>
+                        <div class="emp-section-title">
+                            <h3>Section elements
+              <button type="button" class="emp-icon-view-image" title="View image" tabindex="1">View image</button>
+            </h3>
+                        </div>
+                        <div class="emp-section-field">
+                            <div class="emp-field">
+                                <div class="cui-label">
+                                    <span>Total ($):</span>
+                                </div>
+                                <div class="cui-data">
+                                    <span class="emp-data">1,234.56</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="emp-section-field">
+                            <div class="emp-field">
+                                <div class="cui-data-left">
+                                    <div class="cui-data">
+                                        <i class="emp-icon-redcheck" title="review-details"></i>
+                                    </div>
+                                    <div class="cui-label">
+                                        <span class="emp-label">
+                        Review Details
+                    </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="emp-section-controls">
+                            <ul>
+                                <li>
+                                    <button type="button" class="emp-icon-section-instructions-toggle-expand" title="Click to show section's instructions" tabindex="1">Click to show section's instructions</button>
+                                </li>
+                                <li>
+                                    <button type="button" class="emp-icon-section-toggle-collapse" title="Hide section" tabindex="1">Hide section</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </header>
+                </section>
+            </form>
+        </main>
+    </div>
+    <script id="require" src="../../dist/js/main.js"></script>
+    <script>
+    require(['jquery', 'emp', 'uimockup', 'domReady!'], function($, emp, uiMockup) {
+        // Elements in the page that need to be turned into a data store
+        uiMockup.createPageDataStore(function(results) {
+            emp.init();
+        });
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+@charset "utf-8";
+/*! Empire 2
+ *  @description  eCore
+ *  @version      0.1.0.REL20221118
+ *  @copyright    2022 New York State Office of Information Technology Services
+ */
+
+.emp-modal-2{align-items:center;display:flex;height:100%;justify-content:center;left:0;position:fixed;top:0;width:100%;z-index:1000}.emp-modal-2.emp-modal-blockout{background:rgba(51,51,51,.4)}.emp-modal-2 .emp-modal-2-outer-wrapper{background:#fff;border:solid 1px #333;border-radius:5px;min-height:100px;min-width:100px;max-width:500px;overflow:hidden;z-index:1100}.emp-modal-2 .emp-modal-2-outer-wrapper .emp-modal-2-header{min-height:25px;padding:10px}.emp-modal-2 .emp-modal-2-outer-wrapper .emp-modal-2-content p,.emp-modal-2 .emp-modal-2-outer-wrapper .emp-modal-2-content ul{margin:1em;padding:0}.emp-modal-2 .emp-modal-2-outer-wrapper .emp-modal-2-footer{background:#ddd;padding:10px;text-align:right}.emp-modal-2 .emp-modal-2-outer-wrapper .emp-modal-2-footer button{margin-left:5px}
+
+/*# sourceMappingURL=modal2.css.map */

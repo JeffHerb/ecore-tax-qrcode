@@ -1,0 +1,67 @@
+<!doctype HTML>
+<html lang="en" class="theme-teal">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Favorites Test</title>
+    <link href="../../../dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+</head>
+<body>
+    <div id="body-wrapper">
+        
+    </div>
+</body>
+<script id="require" src="../../../dist/js/main.js"></script>
+<script>
+            var fwData = {
+            "page": {
+                "contents": [{
+                    "template": "pagebody",
+                    "contents": [{
+                        "type": "section",
+                        "contents": [{
+                                "template": "group",
+                                "title": "Section Title",
+                                "type": "header"
+                            },
+                            {
+                                "type": "row",
+                                "template": "grid",
+                                "contents": [{
+                                        "type": "column",
+                                        "template": "grid",
+                                        "width": "half",
+                                        "contents": [{
+                                            "type": "text",
+                                            "template": "field",
+                                            "label": {
+                                                "attributes": {
+                                                    "for": "E_VALUE_1"
+                                                },
+                                                "text": "Value 1:"
+                                            },
+                                            "input": {
+                                                "attributes": {
+                                                    "id": "E_VALUE_1",
+                                                    "value": "121255252523",
+                                                    "maxlength": "23",
+                                                    "size": "27"
+                                                },
+                                                "style": "numeric"
+                                            }
+                                        }]
+                                    },
+                           ]
+                            } ]
+                    }]
+                }]
+            }
+        };
+   
+</script>
+<script>
+    require(["jquery", "emp", "domReady!"], function ($, emp) {
+        // console.log("page is done");
+    });
+</script>
+</html>

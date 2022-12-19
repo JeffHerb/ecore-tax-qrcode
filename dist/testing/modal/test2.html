@@ -1,0 +1,924 @@
+<!doctype HTML>
+<html lang="en" class="theme-teal">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Tables - Generic test page</title>
+        <link href="/dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+
+        <!-- Removed the html 5 shiv for testing purposes -->
+    </head>
+    <body>
+
+        <div id="body-wrapper"></div>
+
+    </body>
+
+    <script id="require" src="/dist/js/main.js"></script>
+    <script>
+        var fwData = {
+            page: {
+                "contents": [
+                    {
+                        "template": "globalHeader" ,
+                        "tabsets": {
+                            "type": "unordered",
+                            "template": "lists",
+                            "attributes": {
+                                "className": "emp-tabset"
+                            },
+                            "options": [
+                                {
+                                    "template": "link",
+                                    "attributes": {
+                                        "href": "page.jsp"
+                                    },
+                                    "text": "tabNav 1"
+                                },
+                                {
+                                    "template": "link",
+                                    "attributes": {
+                                        "href": "page.jsp"
+                                    },
+                                    "text": "tabNav 2"
+                                },
+                                {
+                                    "template": "link",
+                                    "attributes": {
+                                        "href": "page.jsp"
+                                    },
+                                    "text": "tabNav 3"
+                                },
+                                {
+                                    "template": "link",
+                                    "attributes": {
+                                        "href": "page.jsp"
+                                    },
+                                    "text": "tabNav 4"
+                                },
+                                {
+                                    "template": "link",
+                                    "attributes": {
+                                        "href": "page.jsp"
+                                    },
+                                    "text": "tabNav 5"
+                                },
+                                {
+                                    "template": "link",
+                                    "attributes": {
+                                        "href": "page.jsp"
+                                    },
+                                    "text": "tabNav 6"
+                                },
+                                {
+                                    "template": "link",
+                                    "attributes": {
+                                        "href": "page.jsp"
+                                    },
+                                    "text": "tabNav 7"
+                                },
+                                {
+                                    "template": "link",
+                                    "attributes": {
+                                        "href": "page.jsp"
+                                    },
+                                    "text": "tabNav 8"
+                                }
+                            ]
+                        },
+                        "page": {
+                            "title": "Page Title",
+                            "mode": "Page Mode"
+                        },
+                        "accounts": {
+                            "primary": {
+                                "indicators": {
+                                    "bankruptcy": {
+                                        "type": "static",
+                                        "template": "notifier",
+                                        "attributes": {
+                                            "alt": "B",
+                                            "id": "primary-bankruptcy"
+                                        },
+                                        "text": "Bankruptcy exists"
+                                    },
+                                    "identity": {
+                                        "type": "static",
+                                        "template": "notifier",
+                                        "attributes": {
+                                            "alt": "I",
+                                            "id": "primary-identity"
+                                        },
+                                        "text": "Identity theft"
+                                    },
+                                    "legalRep": {
+                                        "type": "button",
+                                        "template": "field",
+                                        "input": {
+                                            "attributes": {
+                                                "id": "primary-legal",
+                                                "name": "primary-legal"
+                                            },
+                                            "icon": "legal",
+                                            "text": "View legal representative"
+                                        }
+                                    },
+                                    "event": {
+                                        "type": "button",
+                                        "template": "field",
+                                        "input": {
+                                            "attributes": {
+                                                "id": "primary-event",
+                                                "name": "primary-event"
+                                            },
+                                            "icon": "add-event",
+                                            "text": "Popup add event"
+                                        }
+                                    }
+                                },
+                                "id": "123-45-6789 (IND)",
+                                "name": "John H. Smith",
+                                "address": "1943 Crossing Stone Ct., Albany, NY 12227",
+                                "sendID": {
+                                    "type": "button",
+                                    "template": "field",
+                                    "input": {
+                                        "attributes": {
+                                            "id": "send-id",
+                                            "name": "send-id",
+                                            "className": "emp-button-send-id",
+                                            "tabindex": "1",
+                                            "type": "button"
+                                        },
+                                        "text": "Send ID"
+                                    }
+                                },
+                                "differentMail": {
+                                    "type": "button",
+                                    "template": "field",
+                                    "input": {
+                                        "attributes": {
+                                            "id": "button",
+                                            "name": "button",
+                                            "type": "button"
+                                        },
+                                        "icon": "emp-icon-diff-mail",
+                                        "text": "Mailing address is different"
+                                    }
+                                },
+                            },
+                            "associate": {
+                                "indicators": {
+                                    "bankruptcy": {
+                                        "type": "static",
+                                        "template": "notifier",
+                                        "attributes": {
+                                            "alt": "B",
+                                            "id": "associate-bankruptcy"
+                                        },
+                                        "text": "Bankruptcy exists"
+                                    },
+                                    "identity": {
+                                        "type": "static",
+                                        "template": "notifier",
+                                        "attributes": {
+                                            "alt": "I",
+                                            "id": "associate-identity"
+                                        },
+                                        "text": "Identity theft"
+                                    },
+                                    "joint": {
+                                        "type": "button",
+                                        "template": "field",
+                                        "input": {
+                                            "attributes": {
+                                                "id": "associate-data-joint",
+                                                "name": "associate-data-joint"
+                                            },
+                                            "icon": "data-joint",
+                                            "text": "Popup Data for Joint Taxpayer"
+                                        }
+                                    },
+                                    "jointList": {
+                                        "type": "button",
+                                        "template": "field",
+                                        "input": {
+                                            "attributes": {
+                                                "id": "assoicate-list-joint",
+                                                "name": "assoicate-list-joint"
+                                            },
+                                            "icon": "list-joint",
+                                            "text": "View Joint Taxpayer List"
+                                        }
+                                    },
+                                    "legalRep": {
+                                        "type": "button",
+                                        "template": "field",
+                                        "input": {
+                                            "attributes": {
+                                                "id": "associate-legal-rep",
+                                                "name": "associate-legal-rep"
+                                            },
+                                            "icon": "legal",
+                                            "text": "View legal representative"
+                                        }
+                                    }
+                                },
+                                "id": "234-56-7890 (IND)",
+                                "name": "Jane M. Johnson-Smith"
+                            },
+                            "sendID": true,
+                            "getID": true,
+                            "allowSwitch": true
+                        },
+                        "search": {
+                            "headerID": {
+                                "select": {
+                                    "type": "select",
+                                    "template": "field",
+                                    "label": {
+                                        "text": "Header ID type",
+                                        "attributes": {
+                                            "for": "HEADER_ID_TYPE"
+                                        },
+                                        "visibility": "hidden",
+                                        "hasLayout": false,
+                                    },
+                                    "input": {
+                                        "attributes": {
+                                            "name": "HEADER_ID_TYPE",
+                                            "id": "HEADER_ID_TYPE",
+                                            "tabindex": 1,
+                                        },
+                                        "options": {
+                                            "NC": {
+                                                "text": "9 Character ID",
+                                                "value": "NC",
+                                                "tabindex": 1
+                                            },
+                                            "BN": {
+                                                "text": "Business Name",
+                                                "value": "BN",
+                                                "tabindex": 1
+                                            },
+                                            "BT": {
+                                                "text": "Business Taxpayer ID",
+                                                "value": "BT",
+                                                "tabindex": 1
+                                            },
+                                            "IN": {
+                                                "text": "Individual Name",
+                                                "value": "IN",
+                                                "tabindex": 1
+                                            },
+                                            "IT": {
+                                                "text": "Individual Taxpayer ID",
+                                                "value": "IT",
+                                                "tabindex": 1
+                                            },
+                                            "MA": {
+                                                "text": "Mail Agent ID",
+                                                "value": "MA",
+                                                "tabindex": 1
+                                            },
+                                            "RD": {
+                                                "text": "Representative ID",
+                                                "value": "RD",
+                                                "tabindex": 1
+                                            },
+                                            "RN": {
+                                                "text": "Representative Name",
+                                                "value": "RN",
+                                                "tabindex": 1
+                                            }
+                                        },
+                                        "value": "NC",
+                                        "noBlankOption": true
+                                    },
+                                    "noWrap": true
+                                },
+                                "defaultValues": {
+                                    "NC": {
+                                        "id": "123456789"
+                                    },
+                                    "BN": {
+                                        "name": "Business Name"
+                                    },
+                                    "IN": {
+                                        "last": "Doe",
+                                        "first": "John",
+                                        "middle": "A"
+                                    }
+                                }
+                            },
+                            "row": [
+                                {
+                                    "fields": [
+                                        {
+                                            "type": "select",
+                                            "template": "field",
+                                            "label": {
+                                                "text": "View:",
+                                                "attributes": {
+                                                    "for": "S_VIEW"
+                                                }
+                                            },
+                                            "input": {
+                                                "attributes": {
+                                                    "name": "S_VIEW",
+                                                    "id": "S_VIEW",
+                                                },
+                                                "required": true,
+                                                "options": {
+                                                    "all": {
+                                                        "text": "ALL",
+                                                        "value": "all",
+                                                        "tabindex": 1
+                                                    },
+                                                    "non-reversed": {
+                                                        "text": "NON-REVERSED",
+                                                        "value": "non-reversed",
+                                                        "tabindex": 1
+                                                    }
+                                                },
+                                                "noBlankOption": true,
+                                                "value": "all"
+                                            }
+                                        },
+                                        {
+                                            "type": "text",
+                                            "template": "field",
+                                            "label": {
+                                                "text": "Tax Type:",
+                                                "attributes": {
+                                                    "for": "tax-type"
+                                                }
+                                            },
+                                            "input": {
+                                                "attributes": {
+                                                    "name": "tax-type",
+                                                    "id": "tax-type",
+                                                    "type": "text",
+                                                    "value": "CORP",
+                                                },
+                                                "requestedMode": "1"
+                                            }
+                                        },
+                                        {
+                                            "type": "button",
+                                            "template": "field",
+                                            "input": {
+                                                "attributes": {
+                                                    "id": "button",
+                                                    "name": "button"
+                                                },
+                                                "icon": "tax-type",
+                                                "text": "Button"
+                                            }
+                                        },
+                                        {
+                                            "type": "text",
+                                            "template": "field",
+                                            "label": {
+                                                "text": "Tax Sub Type Desc:",
+                                                "attributes": {
+                                                    "for": "tax-type"
+                                                }
+                                            },
+                                            "input": {
+                                                "attributes": {
+                                                    "name": "tax-type",
+                                                    "id": "tax-type",
+                                                    "type": "text",
+                                                    "value": "CT-182 Adl Tax Oil Co.",
+                                                },
+                                                "requestedMode": "1"
+                                            }
+                                        },
+                                    ]
+                                },
+                                {
+                                    "fields": [
+                                        {
+                                            "type": "date",
+                                            "template": "field",
+                                            "label": {
+                                               "text": "Liability Period Begin:",
+                                               "attributes": {
+                                                   "for": "S_LIABILITY_PERIOD_BEGIN"
+                                               }
+                                            },
+                                            "input": {
+                                               "attributes": {
+                                                   "name": "S_LIABILITY_PERIOD_BEGIN",
+                                                   "id": "S_LIABILITY_PERIOD_BEGIN",
+                                                   "type": "01/01/2007",
+                                                   "maxlength": "10",
+                                                   "className": "emp-date"
+                                               },
+                                               "required": true,
+                                            }
+                                        },
+                                        {
+                                            "type": "date",
+                                            "template": "field",
+                                            "label": {
+                                               "text": "Liability Period End:",
+                                               "attributes": {
+                                                   "for": "S_LIABILITY_PERIOD_END"
+                                               },
+                                               "required": true,
+                                            },
+                                            "input": {
+                                               "attributes": {
+                                                   "name": "S_LIABILITY_PERIOD_END",
+                                                   "id": "S_LIABILITY_PERIOD_END",
+                                                   "type": "01/01/2007",
+                                                   "maxlength": "10",
+                                                   "className": "emp-date"
+                                               },
+                                               "required": true,
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "buttons": {
+                            "retrieve": {
+                                "type": "button",
+                                "template": "field",
+                                "input": {
+                                    "attributes": {
+                                        "id": "retrieve-button",
+                                        "name": "retrieve-button",
+                                        "className": "cui-button-primary emp-search-retrieve",
+                                        "tabindex": 1,
+                                        "type": "submit"
+                                    },
+                                    "text": "Retrieve"
+                                }
+                            },
+                            "clear": {
+                                "type": "button",
+                                "template": "field",
+                                "input": {
+                                    "attributes": {
+                                        "id": "clear-button",
+                                        "name": "clear-button",
+                                        "className": "emp-button-search-clear",
+                                        "tabindex": 1,
+                                        "title": "Leave ID and clear the rest",
+                                        "type": "button"
+                                    },
+                                    "text": "Clear"
+                                }
+                            },
+                            "clearAll": {
+                                "type": "button",
+                                "template": "field",
+                                "input": {
+                                    "attributes": {
+                                        "id": "clear-all-button",
+                                        "name": "clear-all-button",
+                                        "className": "emp-button-search-clear-all",
+                                        "tabindex": 1,
+                                        "title": "Clear all fields in search box",
+                                        "type": "button"
+                                    },
+                                    "text": "All"
+                                }
+                            },
+                            "hideSearchBox": {
+                                "type": "button",
+                                "template": "field",
+                                "input": {
+                                    "attributes": {
+                                        "id": "emp-search-toggle",
+                                        "className": "emp-search-toggle",
+                                        "tabindex": 1,
+                                        "title": "Hide the search box",
+                                        "type": "button"
+                                    },
+                                    "text": "Hide the search box"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "template": "pagebody",
+                        "contents": [
+                            {
+                                "tag": "form",
+                                "attributes": {
+                                    "name": "form1",
+                                    "id": "form1"
+                                },
+                                "contents": [
+                                    {
+                                        "type": "row",
+                                        "template": "grid",
+                                        "contents": [
+                                            {
+                                                "type": "column",
+                                                "template": "grid",
+                                                "contents": [
+                                                    {
+                                                        "type": "section",
+                                                        "contents": [
+                                                            {
+                                                                "type": "header",
+                                                                "template": "group",
+                                                                "title": "Individual Demo Graphics"
+                                                            },
+                                                            { // Group Row 1
+                                                                "type": "row",
+                                                                "template": "grid",
+                                                                "contents": [
+                                                                    {
+                                                                        "type": "column",
+                                                                        "template": "grid",
+                                                                        "contents": [
+                                                                            { // InputGroup for user name
+                                                                                "type": "inputs",
+                                                                                "template": "inputGroup",
+                                                                                "legend": "Full Name",
+                                                                                "options": [
+                                                                                    {  // First Name
+                                                                                        "type": "text",
+                                                                                        "template": "field",
+                                                                                        "label": {
+                                                                                            "text": "First Name",
+                                                                                            "attributes": {
+                                                                                                "for": "E_FIRST_NAME"
+                                                                                            },
+                                                                                            "visibility": "hidden",
+                                                                                            "hasLayout": false
+                                                                                        },
+                                                                                        "input": {
+                                                                                            "attributes": {
+                                                                                                "name": "E_FIRST_NAME",
+                                                                                                "id": "E_FIRST_NAME",
+                                                                                                "type": "text",
+                                                                                                "value": "",
+                                                                                            }
+                                                                                        }
+                                                                                    }, // End of First Name
+                                                                                    {  // Middle Initial
+                                                                                        "type": "text",
+                                                                                        "template": "field",
+                                                                                        "label": {
+                                                                                            "text": "Middle Initial",
+                                                                                            "attributes": {
+                                                                                                "for": "E_MIDDLE_INITIAL"
+                                                                                            },
+                                                                                            "visibility": "hidden",
+                                                                                            "hasLayout": false
+                                                                                        },
+                                                                                        "input": {
+                                                                                            "attributes": {
+                                                                                                "name": "E_MIDDLE_INITIAL",
+                                                                                                "id": "E_MIDDLE_INITIAL",
+                                                                                                "type": "text",
+                                                                                                "value": "",
+                                                                                                "size": 1
+                                                                                            }
+                                                                                        }
+                                                                                    }, // End of Middle Initial
+                                                                                    {  // Last Name
+                                                                                        "type": "text",
+                                                                                        "template": "field",
+                                                                                        "label": {
+                                                                                            "text": "Last Name",
+                                                                                            "attributes": {
+                                                                                                "for": "E_LAST_NAME"
+                                                                                            },
+                                                                                            "visibility": "hidden",
+                                                                                            "hasLayout": false
+                                                                                        },
+                                                                                        "input": {
+                                                                                            "attributes": {
+                                                                                                "name": "E_LAST_NAME",
+                                                                                                "id": "E_LAST_NAME",
+                                                                                                "type": "text",
+                                                                                                "value": "",
+                                                                                            }
+                                                                                        }
+                                                                                    }, // End of Last Name
+                                                                                    {  // Suffix
+                                                                                        "type": "select",
+                                                                                        "template": "field",
+                                                                                        "label": {
+                                                                                            "text": "Suffix",
+                                                                                            "attributes": {
+                                                                                                "for": "E_NAME_SUFFIX"
+                                                                                            },
+                                                                                            "visibility": "hidden",
+                                                                                            "hasLayout": false
+                                                                                        },
+                                                                                        "input": {
+                                                                                            "attributes": {
+                                                                                                "name": "E_NAME_SUFFIX",
+                                                                                                "id": "E_NAME_SUFFIX",
+                                                                                            },
+                                                                                            "options": {
+                                                                                                "jr": {
+                                                                                                    "text": "JR",
+                                                                                                    "value": "jr",
+                                                                                                    "tabindex": 1
+                                                                                                },
+                                                                                                "i": {
+                                                                                                    "text": "I",
+                                                                                                    "value": "i",
+                                                                                                    "tabindex": 1
+                                                                                                },
+                                                                                                "ii": {
+                                                                                                    "text": "II",
+                                                                                                    "value": "ii",
+                                                                                                    "tabindex": 1
+                                                                                                },
+                                                                                                "iii": {
+                                                                                                    "text": "III",
+                                                                                                    "value": "iii",
+                                                                                                    "tabindex": 1
+                                                                                                },
+                                                                                            }
+                                                                                        }
+                                                                                    },  // End of Suffix
+
+                                                                                ]
+                                                                            } // End of Input Group
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            },
+                                                            { // Group Row 2
+                                                                "type": "row",
+                                                                "template": "grid",
+                                                                "contents": [
+                                                                    {
+                                                                        "type": "column",
+                                                                        "template": "grid",
+                                                                        "width": "half",
+                                                                        "contents": [
+                                                                            {
+                                                                                "type": "date",
+                                                                                "template": "field",
+                                                                                "label": {
+                                                                                    "text": "Issue Date: ",
+                                                                                    "attributes": {
+                                                                                        "for": "E_RGG_REREG_COA_ISSUE_DATE"
+                                                                                    }
+                                                                                },
+                                                                                "input": {
+                                                                                    "attributes": {
+                                                                                        "name": "E_RGG_REREG_COA_ISSUE_DATE",
+                                                                                        "id": "E_RGG_REREG_COA_ISSUE_DATE",
+                                                                                        "type": "text",
+                                                                                        "value": '1/1/2015'
+                                                                                    }
+                                                                                }
+                                                                            },
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "type": "column",
+                                                                        "template": "grid",
+                                                                        "width": "half",
+                                                                        "contents": [
+                                                                            {  // Status
+                                                                                "type": "select",
+                                                                                "template": "field",
+                                                                                "label": {
+                                                                                    "text": "Status",
+                                                                                    "attributes": {
+                                                                                        "for": "E_ISSUE_STATUS"
+                                                                                    }
+                                                                                },
+                                                                                "input": {
+                                                                                    "required": true,
+                                                                                    "attributes": {
+                                                                                        "name": "E_ISSUE_STATUS",
+                                                                                        "id": "E_ISSUE_STATUS",
+                                                                                    },
+                                                                                    "value": "open",
+                                                                                    "options": {
+                                                                                        "open": {
+                                                                                            "text": "Open",
+                                                                                            "value": "open",
+                                                                                            "tabindex": 1
+                                                                                        },
+                                                                                        "close": {
+                                                                                            "text": "Close",
+                                                                                            "value": "close",
+                                                                                            "tabindex": 1
+                                                                                        },
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            },
+                                                            { // Group Row 3
+                                                                "type": "row",
+                                                                "template": "grid",
+                                                                "contents": [
+                                                                    { // InputGroup for user name
+                                                                        "type": "inputs",
+                                                                        "template": "inputGroup",
+                                                                        "legend": "Street Address",
+                                                                        "options": [
+                                                                            {  // Street Address
+                                                                                "type": "text",
+                                                                                "template": "field",
+                                                                                "label": {
+                                                                                    "text": "Street",
+                                                                                    "attributes": {
+                                                                                        "for": "E_STREET"
+                                                                                    },
+                                                                                    "visibility": "hidden",
+                                                                                    "hasLayout": false
+                                                                                },
+                                                                                "input": {
+                                                                                    "attributes": {
+                                                                                        "name": "E_STREET",
+                                                                                        "id": "E_STREET",
+                                                                                        "type": "text",
+                                                                                        "value": "",
+                                                                                    }
+                                                                                }
+                                                                            }, // End of Street Address
+                                                                            {  // Middle Initial
+                                                                                "type": "text",
+                                                                                "template": "field",
+                                                                                "label": {
+                                                                                    "text": "City",
+                                                                                    "attributes": {
+                                                                                        "for": "E_CITY"
+                                                                                    },
+                                                                                    "visibility": "hidden",
+                                                                                    "hasLayout": false
+                                                                                },
+                                                                                "input": {
+                                                                                    "attributes": {
+                                                                                        "name": "E_CITY",
+                                                                                        "id": "E_CITY",
+                                                                                        "type": "text",
+                                                                                        "value": "",
+                                                                                    }
+                                                                                }
+                                                                            }, // End of Middle Initial
+                                                                            {  // Last Name
+                                                                                "type": "text",
+                                                                                "template": "field",
+                                                                                "label": {
+                                                                                    "text": "Last Name",
+                                                                                    "attributes": {
+                                                                                        "for": "E_Zip"
+                                                                                    },
+                                                                                    "visibility": "hidden",
+                                                                                    "hasLayout": false
+                                                                                },
+                                                                                "input": {
+                                                                                    "attributes": {
+                                                                                        "name": "E_Zip",
+                                                                                        "id": "E_Zip",
+                                                                                        "type": "text",
+                                                                                        "value": "",
+                                                                                    }
+                                                                                }
+                                                                            }, // End of Last Name
+                                                                            {  // Suffix
+                                                                                "type": "select",
+                                                                                "template": "field",
+                                                                                "label": {
+                                                                                    "text": "State",
+                                                                                    "attributes": {
+                                                                                        "for": "E_STATE"
+                                                                                    },
+                                                                                    "visibility": "hidden",
+                                                                                    "hasLayout": false
+                                                                                },
+                                                                                "input": {
+                                                                                    "attributes": {
+                                                                                        "name": "E_STATE",
+                                                                                        "id": "E_STATE",
+                                                                                    },
+                                                                                    "options": {
+                                                                                        "nm": {
+                                                                                            "text": "NM",
+                                                                                            "value": "nm",
+                                                                                        },
+                                                                                        "nj": {
+                                                                                            "text": "NJ",
+                                                                                            "value": "nj",
+                                                                                        },
+                                                                                        "ny": {
+                                                                                            "text": "NY",
+                                                                                            "value": "ny",
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            },  // End of Suffix
+
+                                                                        ]
+                                                                    } // End of Input Group
+                                                                ]
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "template": "pagebody",
+                                        "contents": [
+                                            {
+                                                "type": "row",
+                                                "template": "grid",
+                                                "contents": [
+                                                    {
+                                                        "type": "column",
+                                                        "template": "grid",
+                                                        "contents": [
+                                                            {
+                                                                "type": "button",
+                                                                "template": "field",
+                                                                "input": {
+                                                                    "attributes": {
+                                                                        "id": "modal-button"
+                                                                    },
+                                                                    "text": "Model Button"
+                                                                }
+                                                            },
+                                                            {
+                                                                "type": "button",
+                                                                "template": "field",
+                                                                "input": {
+                                                                    "attributes": {
+                                                                        "id": "modal-button1"
+                                                                    },
+                                                                    "text": "Modal Button"
+                                                                }
+
+                                                            }
+
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    </script>
+    <script>
+
+        require(['cui','domReady!'], function(cui) {
+
+            console.log("page is ready");
+
+            cui.load('modal', function(){
+
+            $('#modal-button').modal({
+              text: "Different Modal Text",
+              display: {
+                height:'30%',
+                width:'30%',
+                className: "anotherModal"
+              },
+              overlay: {
+                supress: false,
+                opacity: 0.3,
+                className: "sumOverlay"
+              }
+            });
+
+            $('#modal-button1').modal({
+              text: "Special Modal Text",
+              display: {
+                height:'60%',
+                width:'30%',
+                className: "modal2"
+              },
+              overlay: {
+                supress: false,
+                opacity: 0.7,
+                className: "overlay2"
+              }
+            });
+
+        });
+
+        });
+
+    </script>
+
+</html>

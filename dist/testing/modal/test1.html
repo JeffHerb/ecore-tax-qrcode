@@ -1,0 +1,1215 @@
+<!DOCTYPE HTML>
+<html class="theme-teal">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <title>Empire Template - Core UI</title>
+    <link href="/dist/css/main.css" rel="stylesheet" type="text/css" media="all">
+</head>
+<body>
+    <div id="body-wrapper">
+        <!-- ==================== -->
+        <!-- ACCESSIBILITY CUES   -->
+        <!-- ==================== -->
+        <div class="cui-hide-from-screen">
+            <a href="#nav">Go to navigation</a>
+            <a href="#main">Go to content</a>
+        </div>
+        <!-- ==================== -->
+        <!-- GLOBAL HEADER        -->
+        <!-- ==================== -->
+        <header>
+            <!-- Logo and main menu -->
+            <div class="emp-header-first-row">
+                <div class="emp-header-logo">
+                    <span class="cui-hide-from-screen">eMPIRE logo</span>
+                </div>
+                <nav id="emp-header-menu-main">
+                    Menu
+                </nav>
+            </div>
+            <!-- Title, notifiers and secondary menu -->
+            <div class="emp-header-second-row">
+                <div class="emp-header-tabset-title">
+                    <h1>Tabset menu title</h1>
+                </div>
+                <div class="emp-header-notifications">
+                    <button id="notifications" type="button">Notifications</button>
+                </div>
+                <div class="emp-header-preferences">
+                    Preferences menu
+                </div>
+            </div>
+        </header>
+        <!-- ==================== -->
+        <!-- GENERAL HEADER       -->
+        <!-- ==================== -->
+        <div class="emp-general-header">
+            <form name="form_tp_info" id="form_tp_info" action="www.tax.ny.gov" method="post">
+                <!-- Buttons -->
+                <div class="emp-general-header-buttons">
+                    <!-- 7em / 136px -->
+                    <button class="emp-button-send-id" tabindex="1">Send ID</button>
+                    <button class="emp-button-switch" tabindex="1">Switch</button>
+                </div>
+                <!-- Taxpayer info -->
+                <!-- The emp-tpinfo-* classes used at this level are for distinguishing buttons that may appear for both taxpayers (e.g. legal rep) -->
+                <div class="emp-tp-info">
+                    <!-- Main taxpayer -->
+                    <div class="cui-row">
+                        <div class="emp-tp-info-main">
+                            <div class="cui-row">
+                                <div class="emp-tp-id">
+                                    <div class="emp-field">
+                                        <div class="cui-label">
+                                            <span class="emp-label">ID:</span>
+                                        </div>
+                                        <div class="cui-data">
+                                            <span class="emp-data">123-45-6789 (IND)</span>
+                                            <span class="emp-indicator-1" title="Bankruptcy exists" alt="B">Bankruptcy exists</span>
+                                            <span class="emp-indicator-1" title="Identity theft" alt="I">Identity theft</span>
+                                            <button type="button" class="emp-icon-legal-rep" title="View legal representative" tabindex="1">View legal representative</button>
+                                            <button type="button" class="emp-icon-add-event" title="Popup add event" tabindex="1">Popup add event</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cui-row">
+                                <div class="emp-tp-name">
+                                    <div class="emp-field">
+                                        <div class="cui-label">
+                                            <span class="emp-label">Name:</span>
+                                        </div>
+                                        <div class="cui-data">
+                                            <span class="emp-data">John H. Smith</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cui-row">
+                                <div class="emp-tp-address">
+                                    <div class="emp-field">
+                                        <div class="cui-label">
+                                            <span class="emp-label">Address:</span>
+                                        </div>
+                                        <div class="cui-data">
+                                            <span class="emp-data">1943 Crossing Stone Ct., Albany, NY 12227</span>
+                                            <button type="button" class="emp-icon-diff-mail" title="Mailing address is different" tabindex="1">Mailing address is different</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Joint taxpayer -->
+                        <div class="emp-tp-info-joint">
+                            <div class="cui-row">
+                                <div class="emp-tp-joint-id">
+                                    <div class="emp-field">
+                                        <div class="cui-label">
+                                            <span class="emp-label">Associated ID:</span>
+                                        </div>
+                                        <div class="cui-data">
+                                            <span class="emp-data">234-56-7890 (IND)</span>
+                                            <span class="emp-indicator-1" title="Bankruptcy exists" alt="B">Bankruptcy exists</span>
+                                            <span class="emp-indicator-1" title="Identity theft" alt="I">Identity theft</span>
+                                            <button type="button" class="emp-icon-data-joint" title="Popup Data for Joint Taxpayer" tabindex="1">Popup Data for Joint Taxpayer</button>
+                                            <button type="button" class="emp-icon-list-joint" title="View Joint Taxpayer List" tabindex="1">View Joint Taxpayer List</button>
+                                            <button type="button" class="emp-icon-legal-rep" title="View legal representative" tabindex="1">View legal representative</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cui-row">
+                                <div class="emp-tp-joint-name">
+                                    <div class="emp-field">
+                                        <div class="cui-label">
+                                            <span class="emp-label">Associated Name:</span>
+                                        </div>
+                                        <div class="cui-data">
+                                            <span class="emp-data">Jane M. Johnson-Smith</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <!-- Workflow -->
+            <form name="form_workflow" id="form_workflow" action="www.tax.ny.gov" method="post">
+                <div class="emp-workflow">
+                    <ul class="emp-workflow-options">
+                        <li>
+                            <button id="workflow_next" type="button" class="emp-icon-workflow-item-next" title="Get next workitem" tabindex="1">Get next workitem</button>
+                        </li>
+                        <li>
+                            <button id="workflow_view_comments" type="button" class="emp-icon-workflow-item-comments" title="View comments" tabindex="1">View comments</button>
+                        </li>
+                        <li>
+                            <button id="workflow_work_management" type="button" class="emp-icon-workflow-item-work-management" title="Go to work management" tabindex="1">Go to work management</button>
+                        </li>
+                    </ul>
+                    <div class="emp-workflow-actions">
+                        <label for="workflow_actions" class="cui-hide-from-screen">Workflow action</label>
+                        <select id="workflow_actions" tabindex="1">
+                            <option>Workflow actions</option>
+                            <option>Workflow actions 12345</option>
+                        </select>
+                        <button id="btn_workFlow_go" tabindex="1">Go</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- ==================== -->
+        <!-- TABSET               -->
+        <!-- ==================== -->
+        <div class="emp-tabset">
+            <!-- Column for tabs -->
+            <ul>
+                <li><a href="#" title="Taxpayer Summary" tabindex="1">TP Sum</a></li>
+                <li><a href="#" title="Search by Name" tabindex="1">Srch by Name</a></li>
+                <li class="emp-selected"><a href="#" title="Name History" tabindex="1">Name History</a></li>
+                <li><a href="#" title="Address Summary" tabindex="1">Address Sum</a></li>
+                <li><a href="#" title="Check Digit" tabindex="1">Check Digit</a></li>
+                <li><a href="#" title="Old ID Search" tabindex="1">Old ID Search</a></li>
+                <li><a href="#" title="Current ID Search" tabindex="1">Current ID Search</a></li>
+                <li><a href="#" title="Multiple 9-Character IDs" tabindex="1">Multi 9-Char ID</a></li>
+                <li><a href="#" title="CT Sub Profile" tabindex="1">CT Sub Profile</a></li>
+                <li><a href="#" title="ST Profile" tabindex="1">ST Profile</a></li>
+                <!--<li><a href="#" title="Multi State" tabindex="1">Multi State</a></li>
+                <li><a href="#" title="Pymt Search" tabindex="1">Pymt Search</a></li>
+                <li><a href="#" title="Trnsfr Return" tabindex="1">Trnsfr Return</a></li>
+                <li><a href="#" title="Transfer In" tabindex="1">Transfer In</a></li>
+                <li><a href="#" title="Transfer In/Out" tabindex="1">Transfer In/Out</a></li>
+                <li><a href="#" title="TFA Details" tabindex="1">TFA Details</a></li>
+                <li><a href="#" title="Events" tabindex="1">Events</a></li>
+                <li><a href="#" title="Correspondence" tabindex="1">Correspondence</a></li>-->
+            </ul>
+            <!-- Absolutely-positioned pane for showing/hiding the tabset -->
+            <button type="button" class="emp-icon-tabset-show-hide" title="Show a full/partial tabset view" tabindex="1">Resize the tabset's height</button>
+        </div>
+        <!-- ==================== -->
+        <!-- SEARCH BOX           -->
+        <!-- ==================== -->
+        <!-- Use class="emp-search-box-collapsed" to hide search box -->
+        <div class="emp-search-box">
+            <!-- Absolutely-positioned column for showing/hiding the search box -->
+            <div class="emp-show-hide">
+                <button type="button" class="emp-icon-search-show-hide" title="Hide the search box" tabindex="1">Hide the search box</button>
+            </div>
+            <form name="form_search" id="form_search" action="www.tax.ny.gov" method="post">
+                <!-- Column for Get ID button -->
+                <!-- Buttons -->
+                <div class="emp-search-buttons-left">
+                    <button type="button" class="emp-button-get-id" id="btn_get_id" tabindex="1">Get ID</button>
+                </div>
+                <div class="emp-search-fields">
+                    <div class="cui-row">
+                        <div class="emp-search-box-field">
+                            <div class="emp-field">
+                                <div class="cui-label">
+                                    <label for="HEADER_ID_TYPE" class="cui-hide-from-screen">Header ID type</label>
+                                    <select id="HEADER_ID_TYPE" tabindex="1">
+                                        <option value="NC" selected="selected">9 Character ID</option>
+                                        <option value="BN">Business Name</option>
+                                        <option value="BT">Business Taxpayer ID</option>
+                                        <option value="IN">Individual Name</option>
+                                        <option value="IT">Individual Taxpayer ID</option>
+                                        <option value="MA">Mail Agent ID</option>
+                                        <option value="RD">Representative ID</option>
+                                        <option value="RN">Representative Name</option>
+                                    </select>
+                                </div>
+                                <div class="cui-data">
+                                    <label for="HEADER_ID_NUMBER" class="cui-hide-from-screen">Header ID number</label>
+                                    <input type="text" id="HEADER_ID_NUMBER" value="" size="20" maxlength="50" tabindex="1">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cui-row">
+                        <div class="emp-search-box-field">
+                            <div class="emp-field cui-required">
+                                <div class="cui-label">
+                                    <label for="S_VIEW">View:</label>
+                                </div>
+                                <div class="cui-data">
+                                    <select id="S_VIEW" tabindex="1" aria-required="true">
+                                        <option selected="selected">ALL</option>
+                                        <option>NON-REVERSED</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="S_TAX_TYPE_TEXT" class="emp-search-box-field">
+                            <div class="emp-field cui-required">
+                                <div class="cui-label">
+                                    <span class="emp-label">Tax Type:</span>
+                                </div>
+                                <div class="cui-data">
+                                    <span class="emp-data">CORP</span>
+                                    <button type="button" id="S_POPUP" class="emp-icon-tax-type" title="Tax type selection popup" tabindex="1">Tax type selection popup</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="S_TAX_SUB_TYPE_DESC" class="emp-search-box-field">
+                            <div class="emp-field">
+                                <div class="cui-label">
+                                    <span class="emp-label">Tax Sub Type Desc:</span>
+                                </div>
+                                <div class="cui-data">
+                                    <span class="emp-data">CT-182 Adl Tax Oil Co.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cui-row">
+                        <div class="emp-search-box-field">
+                            <div class="emp-field cui-required">
+                                <div class="cui-label">
+                                    <label for="S_LIABILITY_PERIOD_BEGIN">Liability Period Begin:</label>
+                                </div>
+                                <div class="cui-data">
+                                    <input type="text" id="S_LIABILITY_PERIOD_BEGIN" class="emp-date" value="01/01/2007" maxlength="10" tabindex="1">
+                                    <button href="#" id="dp_S_LIABILITY_PERIOD_BEGIN" class="cui-icon cui-c-datepicker" title="Date picker" tabindex="1">Date picker</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="emp-search-box-field">
+                            <div class="emp-field cui-required">
+                                <div class="cui-label">
+                                    <label for="S_LIABILITY_PERIOD_END">Liability Period End:</label>
+                                </div>
+                                <div class="cui-data">
+                                    <input type="text" id="S_LIABILITY_PERIOD_END" class="emp-date" aria-required="true" value="01/01/2007" maxlength="10" tabindex="1">
+                                    <button href="#" id="dp_S_LIABILITY_PERIOD_END" class="cui-icon cui-c-datepicker" title="Date picker" tabindex="1">Date picker</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Buttons -->
+                <div class="emp-search-buttons-right">
+                    <button type="submit" class="cui-button-primary emp-search-retrieve" tabindex="1">Retrieve</button>
+                    <button type="button" class="emp-button-search-clear" title="Leave ID and clear the rest" tabindex="1">Clear</button>
+                    <button type="button" class="emp-button-search-clear-all" title="Clear all fields in search box" tabindex="1">Clear all</button>
+                </div>
+            </form>
+        </div>
+        <!-- blah -->
+        <!-- ==================== -->
+        <!-- PAGE MESSAGES        -->
+        <!-- ==================== -->
+        <div class="cui-messages cui-hidden">
+            <div class="emp-messages">
+                <ul>
+                    <li class="cui-error">
+                        <p>Error message. This is a long error message so that it wraps and I can make sure it looks ok and better than its equivalent on empire 1.0. Many errors can be displayed at once. So is this enough text to make it wrap? I guess it depends on your browser width? Well I think this is more than enough. If not, nice monitor!</p>
+                    </li>
+                    <li class="cui-warning">
+                        <p>Warning message. Displays information about certain things that need to be considered before continuing.</p>
+                    </li>
+                    <li class="cui-informational">
+                        <p>Informational message. Provide some information to assist in making the right decisions or something.</p>
+                    </li>
+                    <li class="cui-success">
+                        <p>Successful message. Something {noun} was successfully something {verb}. Most of the times only one of this type of message shows per page submission.</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- ####################### -->
+        <!-- DEVELOPER'S CODE (JSP)  -->
+        <!-- ####################### -->
+        <!-- ==================== -->
+        <!-- PAGE TITLE           -->
+        <!-- ==================== -->
+        <div class="emp-page-title">
+            <!-- Page title -->
+            <div class="emp-text">
+                <!-- Note that I took out the angled brackets and just use a span to separate the page mode so we have more flexibility in styling it -->
+                <h2>Page title <span>Page mode</span></h2>
+            </div>
+            <!-- Page actions -->
+            <ul class="emp-actions">
+                <li>
+                    <button type="button" class="emp-icon-sections-toggle" title="Hide all sections" tabindex="1">Hide all sections</button>
+                </li>
+                <li>
+                    <button type="button" class="emp-icon-info-blocks-toggle-expand" title="Show information for all sections" tabindex="1">Show information for all sections</button>
+                </li>
+                <li>
+                    <button type="button" class="emp-icon-print" title="Print page" tabindex="1">Print page</button>
+                </li>
+            </ul>
+        </div>
+        <!-- ==================== -->
+        <!-- INDICATORS           -->
+        <!-- ==================== -->
+        <ul class="emp-indicators">
+            <li><span class="emp-indicator-oic" title="OIC whatever it stands for" tabindex="1">OIC</span></li>
+            <li><a href="#" class="emp-indicator-combat-zone" target="_blank" tabindex="1">Combat Zone</a></li>
+            <li><span class="emp-indicator-unavailable-cod" title="Unavailable for COD..." tabindex="1">Unavailable for COD</span></li>
+            <li><a href="#" class="emp-indicator-multi-locations" target="_blank" tabindex="1">Multi Locations</a></li>
+        </ul>
+        <!-- ==================== -->
+        <!-- AS OF                -->
+        <!-- ==================== -->
+        <div class="emp-asof">
+            <form name="form_asof" id="form_asof" class="emp-asof-col" action="www.tax.ny.gov" method="post">
+                <button type="button" class="emp-asof-prev" title="Previous history" tabindex="1">Previous history</button>
+                <div id="E_AS_OF">As of:
+                    <time>01/01/2012 12:00:00</time>
+                </div>
+                <button type="button" class="emp-asof-next" title="Next history" tabindex="1">Next history</button>
+            </form>
+        </div>
+        <!-- ==================== -->
+        <!-- PAGE CONTENT         -->
+        <!-- ==================== -->
+        <main role="main">
+            <form name="form_content" id="form_content" action="www.tax.ny.gov" method="post" role="main">
+                <!-- ==================== -->
+                <!-- SECTIONS             -->
+                <!-- ==================== -->
+                <!-- ++++++++++++++++++++++++++++++++ -->
+                <!-- SECTION: .Active Exceptions      -->
+                <!-- ++++++++++++++++++++++++++++++++ -->
+                <section class="cui-hidden">
+                    <header>
+                        <div class="emp-section-title">
+                            <h3>Active exceptions</h3>
+                        </div>
+                        <div class="emp-section-controls">
+                            <ul>
+                                <li>
+                                    <button type="button" class="emp-icon-section-toggle-collapse" title="Hide section" tabindex="1">Hide section</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </header>
+                    <div class="cui-row">
+                        <!-- TODO -->
+                    </div>
+                </section>
+                <!-- ++++++++++++++++++++++++++++++++ -->
+                <!-- SECTION: .Simple section         -->
+                <!-- ++++++++++++++++++++++++++++++++ -->
+                <section>
+                    <header>
+                        <div class="emp-section-title">
+                            <h3>Simple section</h3>
+                        </div>
+                        <div class="emp-section-controls">
+                            <ul>
+                                <li>
+                                    <button type="button" class="emp-icon-section-toggle-collapse" title="Hide section" tabindex="1">Hide section</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </header>
+                    <div class="cui-row">
+                        <div class="emp-col-half">
+                            <div class="emp-field">
+                                <div class="cui-label">
+                                    <label for="E_CLOSED_REASON_1">Closed Reason:</label>
+                                </div>
+                                <div class="cui-data">
+                                    <select id="E_CLOSED_REASON_1" tabindex="1">
+                                        <option selected="selected" value="1">No Account</option>
+                                        <option value='2'>Full Paid</option>
+                                        <option value='3'>Full Paid Manual</option>
+                                        <option value='4'>Manual Release</option>
+                                        <option value='5'>No Account Balance</option>
+                                        <option value='6'>No Assets Held</option>
+                                        <option value='7'>No Account</option>
+                                        <option value='8'>Payment Recieved</option>
+                                        <option value='9'>Part Paid</option>
+                                        <option value='10'>Restricted Bank Account</option>
+                                        <option value='11'>Released</option>
+                                        <option value='12'>System-Clsd-Reg-Levy</option>
+                                        <option value='13'>Void-Never Served</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="emp-col-half">
+                            <div class="emp-field">
+                                <div class="cui-label">
+                                    <label for="E_GO_BUTTON_SAMPLE_1">Go button example:</label>
+                                </div>
+                                <div class="cui-data">
+                                    <input type="text" id="E_GO_BUTTON_SAMPLE_1" size="20" maxlength="23" value="Some data" tabindex="1">
+                                    <button type="button" value="1" tabindex="1">Go</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cui-row">
+                        <div id="E_PYMT_STATUS_REASON_1" class="emp-col-half">
+                            <div class="emp-field">
+                                <div class="cui-label">
+                                    <span class="emp-label">Payment Status Reason:</span>
+                                </div>
+                                <div class="cui-data">
+                                    <span class="emp-data">ORIG PSTG</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="E_TARGET_AMOUNT_1" class="emp-col-half">
+                            <div class="emp-field">
+                                <div class="cui-label">
+                                    <span class="emp-label">Target Amount ($):</span>
+                                </div>
+                                <div class="cui-data cui-currency">
+                                    <span class="emp-data">987,765,432.12</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cui-row">
+                        <div id="E_PROJECTED_IPA_AMOUNT_1" class="emp-col-half cui-pull-right">
+                            <div class="emp-field">
+                                <div class="cui-label">
+                                    <span class="emp-label">IPA Amount ($):</span>
+                                </div>
+                                <div class="cui-data cui-currency">
+                                    <span class="emp-data">1,345,789,123,567,901.34</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cui-row">
+                        <div class="emp-col-half">
+                            <div class="emp-field cui-required">
+                                <div class="cui-label">
+                                    <label for="E_PYMT_TYPE_1">Payment Type:</label>
+                                </div>
+                                <div class="cui-data">
+                                    <input type="text" id="E_PYMT_TYPE_1" value="" aria-required="true" size="22" maxlength="20" tabindex="1">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="emp-col-half">
+                            <div class="emp-field">
+                                <div class="cui-label">
+                                    <label for="E_CURRENT_AMOUNT_1">Current Amount ($):</label>
+                                </div>
+                                <div class="cui-data cui-currency">
+                                    <input type="text" id="E_CURRENT_AMOUNT_1" size="20" maxlength="23" aria-required="true" value="1,345,789,123,567,901.34" tabindex="1">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="emp-button-row">
+                        <div class="emp-col-half">
+                            <button type="button" id="E_BUTTON_LIABILITY_PERIOD" name="E_BUTTON_LIABILITY_PERIOD" tabindex="1">Liability Period</button>
+                        </div>
+                        <div class="emp-col-half cui-align-right">
+                            <button type="button" name="E_BUTTON_CANCEL" tabindex="1">Cancel</button>
+                            <button type="button" name="E_BUTTON_UPDATE" class="cui-button-primary" tabindex="1">Update</button>
+                        </div>
+                    </div>
+                </section>
+                <!-- ++++++++++++++++++++++++++ -->
+                <!-- SECTION: .Section elements -->
+                <!-- ++++++++++++++++++++++++++ -->
+                <section>
+                    <header>
+                        <div class="emp-section-title">
+                            <h3>Section elements <button type="button" class="emp-icon-view-image" title="View image" tabindex="1">View image</button></h3>
+                        </div>
+                        <div class="emp-section-field">
+                            <div class="emp-section-header-field">
+                                Total ($): 1,234.56
+                            </div>
+                        </div>
+                        <div class="emp-section-field">
+                            <div class="emp-section-header-field">
+                                <i class="emp-icon-redcheck">Red check mark</i> Review Details
+                            </div>
+                        </div>
+                        <div class="emp-section-controls">
+                            <ul>
+                                <li>
+                                    <button type="button" class="emp-icon-section-instructions-toggle-expand" title="Click to show section's instructions" tabindex="1">Click to show section's instructions</button>
+                                </li>
+                                <li>
+                                    <button type="button" class="emp-icon-section-toggle-collapse" title="Hide section" tabindex="1">Hide section</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </header>
+                    <div class="cui-row emp-section-instructions">
+                        <div class="emp-col-full">
+                            <p id="text_block_1">Free text for section instructions. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea <a href="http://www.tax.ny.gov" title="This will open a new window" target="_blank" tabindex="1">commodo</a> consequat.</p>
+                        </div>
+                    </div>
+                    <div class="cui-row">
+                        <div class="emp-col-half">
+                            <div class="emp-field">
+                                <div class="cui-label">
+                                    <label for="E_ID_DROPDOWN_LABEL" class="cui-hide-from-screen">Id type</label>
+                                    <select id="E_ID_DROPDOWN_LABEL" tabindex="1">
+                                        <option selected="selected" value="NC">9 Character ID</option>
+                                        <option value="BT">Business Taxpayer ID</option>
+                                        <option value="BN">Business Taxpayer Name</option>
+                                        <option value="DN">DLN</option>
+                                        <option value="IT">Individual Taxpayer ID</option>
+                                        <option value="IN">Individual Taxpayer Name</option>
+                                    </select>
+                                </div>
+                                <div class="cui-data">
+                                    <label for="E_ID" class="cui-hide-from-screen">Id</label>
+                                    <input type="text" id="E_ID" size="20" maxlength="18" tabindex="1">
+                                </div>
+                            </div>
+                        </div>
+                        <div id="E_BALANCE_DUE" class="emp-col-half">
+                            <div class="emp-field">
+                                <div class="cui-label">
+                                    <span class="emp-label">Balance Due ($):</span>
+                                </div>
+                                <div class="cui-data cui-currency">
+                                    <span class="emp-data">12,345.67</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cui-row">
+                        <div class="emp-col-half">
+                            <div class="emp-field">
+                                <div class="cui-label">
+                                    <label for="E_CLOSED_REASON">Closed Reason:</label>
+                                </div>
+                                <div class="cui-data">
+                                    <select id="E_CLOSED_REASON" tabindex="1">
+                                        <option selected="selected" value="1">No Account</option>
+                                        <option value='2'>Full Paid</option>
+                                        <option value='3'>Full Paid Manual</option>
+                                        <option value='4'>Manual Release</option>
+                                        <option value='5'>No Account Balance</option>
+                                        <option value='6'>No Assets Held</option>
+                                        <option value='7'>No Account</option>
+                                        <option value='8'>Payment Recieved</option>
+                                        <option value='9'>Part Paid</option>
+                                        <option value='10'>Restricted Bank Account</option>
+                                        <option value='11'>Released</option>
+                                        <option value='12'>System-Clsd-Reg-Levy</option>
+                                        <option value='13'>Void-Never Served</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="emp-col-half">
+                            <div class="emp-field">
+                                <div class="cui-label">
+                                    <label for="E_GO_BUTTON_SAMPLE">Go button example:</label>
+                                </div>
+                                <div class="cui-data">
+                                    <input type="text" id="E_GO_BUTTON_SAMPLE" size="20" maxlength="23" value="Some data" tabindex="1">
+                                    <button type="button" id="btn_E_GO_BUTTON_SAMPLE" value="1" tabindex="1">Go</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cui-row">
+                        <div id="E_PYMT_STATUS_REASON" class="emp-col-half">
+                            <div class="emp-field">
+                                <div class="cui-label">
+                                    <span class="emp-label">Payment Status Reason:</span>
+                                </div>
+                                <div class="cui-data">
+                                    <span class="emp-data">ORIG PSTG</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="emp-col-half">
+                            <div class="emp-field">
+                                <div class="cui-label">
+                                    <span class="emp-label">Target Amount ($):</span>
+                                </div>
+                                <div class="cui-data cui-currency">
+                                    <span class="emp-data">987,765,432.12</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cui-row">
+                        <div id="E_PROJECTED_IPA_AMOUNT" class="emp-col-half cui-pull-right">
+                            <div class="emp-field">
+                                <div class="cui-label">
+                                    <span class="emp-label">IPA Amount ($):</span>
+                                </div>
+                                <div class="cui-data cui-currency">
+                                    <span class="emp-data">987,765,432.12</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cui-row">
+                        <div class="emp-col-half">
+                            <div class="emp-field cui-required">
+                                <div class="cui-label">
+                                    <label for="E_PYMT_TYPE">Payment Type:</label>
+                                </div>
+                                <div class="cui-data">
+                                    <input type="text" id="E_PYMT_TYPE" value="" aria-required="true" size="22" maxlength="20" tabindex="1">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="emp-col-half">
+                            <div class="emp-field">
+                                <div class="cui-label">
+                                    <label for="E_CURRENT_AMOUNT">Current Amount ($):</label>
+                                </div>
+                                <div class="cui-data cui-currency">
+                                    <input type="text" id="E_CURRENT_AMOUNT" size="20" maxlength="23" aria-required="true" value="1,345,789,123,567,901.34" tabindex="1">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cui-row">
+                        <div id="E_TAX_TYPE_SHORT_DESCRIPTION" class="emp-col-half">
+                            <div class="emp-field cui-required">
+                                <div class="cui-label">
+                                    <label>Tax Type:</label>
+                                </div>
+                                <div class="cui-data">
+                                    <span class="emp-data">CORP</span>
+                                    <button type="button" id="E_TAX_TYPE_SHORT_DESCRIPTION_BUTTON" class="emp-icon-popup-view-list" title="View Joint Taxpayer List" tabindex="1">View Joint Taxpayer List</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="E_TAX_SUB_TYPE" class="emp-col-half">
+                            <div class="emp-field">
+                                <div class="cui-label">
+                                    <span class="emp-label">Tax Sub Type:</span>
+                                </div>
+                                <div class="cui-data">
+                                    <span class="emp-data">9-186c(1)(a)/(1)(b) / M</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cui-row">
+                        <div id="E_TAX_SUB_TYPE_DESC" class="emp-col-full">
+                            <div class="emp-field">
+                                <div class="cui-label">
+                                    <span class="emp-label">Tax Sub Type Desc:</span>
+                                </div>
+                                <div class="cui-data">
+                                    <span class="emp-data">WCS - 1 Communications Surcharge</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cui-row">
+                        <div class="emp-col-half">
+                            <div class="emp-field cui-required">
+                                <div class="cui-label">
+                                    <label for="E_LIABILITY_PERIOD_BEGIN">Liability Period Begin:</label>
+                                </div>
+                                <div class="cui-data">
+                                    <input type="text" id="E_LIABILITY_PERIOD_BEGIN" class="emp-date" maxlength="10" tabindex="1">
+                                    <!-- Temp: cui-c-datepicker component should render the code below -->
+                                    <button href="#" class="cui-icon cui-c-datepicker" title="Date picker" tabindex="1">Date picker</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="emp-col-half">
+                            <div class="emp-field">
+                                <div class="cui-label">
+                                    <label for="E_LIABILITY_PERIOD_END">Liability Period End:</label>
+                                </div>
+                                <div class="cui-data">
+                                    <input type="text" id="E_LIABILITY_PERIOD_END" class="emp-date" maxlength="10" tabindex="1">
+                                    <!-- Temp: cui-c-datepicker component should render the code below -->
+                                    <button href="#" class="cui-icon cui-c-datepicker" title="Date picker" tabindex="1">Date picker</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cui-row">
+                        <div class="emp-col-full">
+                            <div class="emp-field cui-required">
+                                <div class="cui-label">
+                                    <label for="E_COMMENTS">Comments:</label>
+                                </div>
+                                <div class="cui-data">
+                                    <textarea id="E_COMMENTS" aria-required="true" rows="3" cols="100" tabindex="1">Tax return for 2002 broken into 48-month installments. Current debt: $1,208.97. Interest Rate is 4.9%.</textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cui-row">
+                        <div id="E_LAST_UPDATED_BY" class="emp-col-full">
+                            <div class="emp-field">
+                                <div class="cui-label">
+                                    <span class="emp-label">Last Updated By:</span>
+                                </div>
+                                <div class="cui-data">
+                                    <span class="emp-data">12345 67890 12345 67890 12345 67890 12345 67890 12345 67890 12345 67890 12345 67890 12345 67890 12345 67890 12345 67890 12345 67890 12345 67890 12345 67890 12345 67890 12345 67890 12345 67890</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cui-row">
+                        <div class="emp-col-half cui-data-left">
+                            <div class="emp-field">
+                                <div class="cui-data">
+                                    <input type="checkbox" id="E_ERRONEOUS_PAYMENT" tabindex="1">
+                                </div>
+                                <div class="cui-label">
+                                    <label for="E_ERRONEOUS_PAYMENT">Erroneous Payment</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="E_TRANSFERRED_OUT" class="emp-col-half cui-data-left">
+                            <div class="emp-field">
+                                <div class="cui-data">
+                                    <i class="emp-icon-redcheck">Red check mark</i>
+                                </div>
+                                <div class="cui-label">
+                                    <span class="emp-label">Transferred Out</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cui-row">
+                        <div id="E_CORRESPONDENCE_ATTACHED" class="emp-col-half cui-data-left">
+                            <div class="emp-field">
+                                <div class="cui-data">
+                                    <i class="emp-icon-stop">Not applicable</i>
+                                </div>
+                                <div class="cui-label">
+                                    <span class="emp-label">Correspondence Attached</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="E_CONVERTED" class="emp-col-half cui-data-left">
+                            <div class="emp-field">
+                                <div class="cui-data">
+                                    <i class="emp-icon-stop">Not applicable</i>
+                                </div>
+                                <div class="cui-label">
+                                    <span class="emp-label">Converted</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <fieldset class="cui-row">
+                        <div id="E_RADIO_BUTTON_EXAMPLE" class="emp-col-full">
+                            <div class="emp-field">
+                                <div class="cui-label">
+                                    <legend>Are you filing in this quarter?</legend>
+                                </div>
+                                <div class="cui-data">
+                                    <div class="cui-selection-group">
+                                        <input type="radio" name="E_RADIO_BUTTON_EXAMPLE_NAME" id="E_RADIO_BUTTON_EXAMPLE_1" value="" tabindex="1">
+                                        <label for="E_RADIO_BUTTON_EXAMPLE_1">Yes</label>
+                                        <input type="radio" name="E_RADIO_BUTTON_EXAMPLE_NAME" id="E_RADIO_BUTTON_EXAMPLE_2" checked="checked" value="2" tabindex="1">
+                                        <label for="E_RADIO_BUTTON_EXAMPLE_2">No</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <div class="emp-button-row">
+                        <div class="emp-col-half">
+                            <button type="button" id="E_BUTTON_LIABILITY_PERIOD_1" name="E_BUTTON_LIABILITY_PERIOD_1" tabindex="1">Liability Period</button>
+                        </div>
+                        <div class="emp-col-half cui-align-right">
+                            <button type="button" name="E_BUTTON_CANCEL_1" tabindex="1">Cancel</button>
+                            <button type="button" name="E_BUTTON_UPDATE_1" class="cui-button-primary" tabindex="1">Update</button>
+                            <button type="button" name="E_BUTTON_CLEAR" tabindex="1">Clear</button>
+                            <button type="button" name="E_BUTTON_ADD" class="cui-button-primary" tabindex="1">Add</button>
+                        </div>
+                    </div>
+                    <!-- Main table wrapper with class of emp-table should always have an id="table_{something}" -->
+                    <div id="table_my_table_1" class="emp-table">
+                        <div class="emp-table-controls">
+                            <div class="emp-section-header-field">
+                                <label for="E_VIEW">View:</label>
+                                <select id="E_VIEW" tabindex="1">
+                                    <option selected="selected">All</option>
+                                    <option>Non-Reversed</option>
+                                </select>
+                            </div>
+                            <div class="emp-section-header-field">
+                                <label for="E_FIELD_CONTAINS">Field Contains:</label>
+                                <input type="text" id="E_FIELD_CONTAINS" size="20" maxlength="50" tabindex="1">
+                            </div>
+                            <div class="emp-section-header-field">
+                                <button class="emp-table-filter" name="btn_Filter_table_my_table_1" value="Filter" tabindex="1">Filter</button>
+                            </div>
+                        </div>
+                        <header>
+                            <div class="emp-table-title">
+                                <h4>Table 1 - Checkboxes</h4>
+                            </div>
+                            <div class="emp-table-options">
+                                <button class="emp-table-paging-prev" name="btn_Previous_table_my_table_1" value="Previous" tabindex="1">Previous</button>
+                                <button class="emp-table-paging-next" name="btn_Next_table_my_table_1" value="Next" tabindex="1">Next</button>
+                                <button type="button" class="emp-icon-table-resizer" title="Resize table" tabindex="1">Resize table</button>
+                            </div>
+                        </header>
+                        <div class="emp-table-wrapper">
+                            <table class="cui-sortable">
+                                <thead>
+                                    <tr>
+                                        <th class="cui-align-center emp-table-col-min-width">
+                                            <label class="cui-hide-from-screen" for="cb_table_my_table_1_all">Select All</label>
+                                            <input type="checkbox" id="cb_table_my_table_1_all" value="" tabindex="1">
+                                        </th>
+                                        <th data-sort="date-range">Liability Period</th>
+                                        <th data-sort="alpha" class="emp-width-ind-1"><span class="cui-hide-from-screen">Joint Liability Period Exists</span></th>
+                                        <th data-sort="alpha" class="emp-width-ind-2"><span class="cui-hide-from-screen">Audit Ownership</span></th>
+                                        <th data-sort="numeric">Score</th>
+                                        <th data-sort="alpha">Tax Type/Sub Type</th>
+                                        <th data-sort="alpha">Return Status</th>
+                                        <th data-sort="alpha">Return Status Date</th>
+                                        <th data-sort="numeric" class="cui-currency">Amount ($)</th>
+                                        <th class="cui-width-icon"><span class="cui-hide-from-screen">Review details</span></th>
+                                        <th class="cui-width-icon"><span class="cui-hide-from-screen">TFA Details</span></th>
+                                        <th class="cui-width-icon"><span class="cui-hide-from-screen">{Page}</span></th>
+                                        <th class="cui-width-icon"><span class="cui-hide-from-screen">Delete row</span></th>
+                                        <th class="cui-width-icon"><span class="cui-hide-from-screen">Edit Details</span></th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="6"></td>
+                                        <td colspan="2" class="cui-align-right">Total Amount ($):</td>
+                                        <td class="cui-currency">2171.74</td>
+                                        <td colspan="5"></td>
+                                    </tr>
+                                </tfoot>
+                                <tbody>
+                                    <tr>
+                                        <td class="cui-align-center emp-table-col-min-width">
+                                            <label class="cui-hide-from-screen" for="cb_table_my_table_1_1">Select this row</label>
+                                            <input type="checkbox" id="cb_table_my_table_1_1" value="" tabindex="1">
+                                        </td>
+                                        <td class="cui-no-wrap"><a href="#" tabindex="1">01/01/2011 - 12/31/2011</a></td>
+                                        <td class="emp-width-ind-1"><span class="emp-indicator-1" title="Joint Liability Period (123-45-6789 (IND), 234-56-7890 (IND))">J</span></td>
+                                        <td class="emp-width-ind-2"></td>
+                                        <td>80</td>
+                                        <td class="cui-no-wrap">CORP - CT-3, 3S, CT-4, 4S</td>
+                                        <td>Not filed</td>
+                                        <td>04/15/2012</td>
+                                        <td class="cui-currency">1,750.00</td>
+                                        <td class="cui-width-icon"></td>
+                                        <td class="cui-width-icon"></td>
+                                        <td class="cui-width-icon">
+                                            <button class="emp-icon-view-details" title="Go to {page}" tabindex="1">Go to {page}</button>
+                                        </td>
+                                        <td class="cui-width-icon">
+                                            <button class="emp-icon-delete" title="Delete record" tabindex="1">Delete record</button>
+                                        </td>
+                                        <td class="cui-width-icon">
+                                            <button class="emp-icon-edit" title="Edit Details" tabindex="1">Edit Details</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cui-align-center emp-table-col-min-width">
+                                            <label class="cui-hide-from-screen" for="cb_table_my_table_1_2">Select this row</label>
+                                            <input type="checkbox" id="cb_table_my_table_1_2" value="" tabindex="1">
+                                        </td>
+                                        <td class="cui-no-wrap"><a href="#" title="Go to Liability Period" tabindex="1">01/01/2012 - 12/31/2012</a></td>
+                                        <td class="emp-width-ind-1"></td>
+                                        <td class="emp-width-ind-2"><span class="emp-indicator-2" title="Audit Ownership">AU</span></td>
+                                        <td>32</td>
+                                        <td class="cui-no-wrap">CORP - CT-3M, 4M MTA</td>
+                                        <td>Not filed</td>
+                                        <td>03/20/2013</td>
+                                        <td class="cui-currency">309.17</td>
+                                        <td class="cui-width-icon"><i class="emp-icon-redcheck">Red check mark</i></td>
+                                        <td class="cui-width-icon">
+                                            <button class="emp-icon-letters-tx" title="Popup TFA details" tabindex="1">Popup TFA details</button>
+                                        </td>
+                                        <td class="cui-width-icon">
+                                            <button class="emp-icon-view-details" title="Go to {page}" tabindex="1">Go to {page}</button>
+                                        </td>
+                                        <td class="cui-width-icon">
+                                            <button class="emp-icon-delete" title="Delete record" tabindex="1">Delete record</button>
+                                        </td>
+                                        <td class="cui-width-icon">
+                                            <button class="emp-icon-edit" title="Edit Details" tabindex="1">Edit Details</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cui-align-center emp-table-col-min-width">
+                                            <label class="cui-hide-from-screen" for="cb_table_my_table_1_3">Select this row</label>
+                                            <input type="checkbox" id="cb_table_my_table_1_3" value="" tabindex="1">
+                                        </td>
+                                        <td class="cui-no-wrap"><a href="#" title="Go to Liability Period" tabindex="1">01/01/2013 - 12/31/2013</a></td>
+                                        <td class="emp-width-ind-1"><span class="emp-indicator-1" title="Joint Liability Period (123-45-6789 (IND), 234-56-7890 (IND))">J</span></td>
+                                        <td class="emp-width-ind-2"></td>
+                                        <td>56</td>
+                                        <td class="cui-no-wrap">CORP - CT-3, 3S, CT-4, 4S</td>
+                                        <td><a href="#" tabindex="1" title="Go to View Return">Filed - Exception</a></td>
+                                        <td>21/02/2014</td>
+                                        <td class="cui-currency">112.57</td>
+                                        <td class="cui-width-icon"><i class="emp-icon-redcheck">Red check mark</i></td>
+                                        <td class="cui-width-icon">
+                                            <button class="emp-icon-letters-tx" title="Popup TFA details" tabindex="1">Popup TFA details</button>
+                                        </td>
+                                        <td class="cui-width-icon">
+                                            <button class="emp-icon-view-details" title="Go to {page}" tabindex="1">Go to {page}</button>
+                                        </td>
+                                        <td class="cui-width-icon"></td>
+                                        <td class="cui-width-icon">
+                                            <button class="emp-icon-more-info" title="View more information" tabindex="1">View more information</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cui-align-center emp-table-col-min-width">
+                                            <label class="cui-hide-from-screen" for="cb_table_my_table_1_4">Select this row</label>
+                                            <input type="checkbox" id="cb_table_my_table_1_4" value="" tabindex="1">
+                                        </td>
+                                        <td class="cui-no-wrap"><a href="#" title="Go to Liability Period" tabindex="1">01/01/2014 - 12/31/2014</a></td>
+                                        <td class="emp-width-ind-1"></td>
+                                        <td class="emp-width-ind-2"></td>
+                                        <td>56</td>
+                                        <td class="cui-no-wrap">CORP - CT-3, 3S, CT-4</td>
+                                        <td>Not filed</td>
+                                        <td>04/13/2015</td>
+                                        <td class="cui-currency">112.57</td>
+                                        <td class="cui-width-icon"></td>
+                                        <td class="cui-width-icon"></td>
+                                        <td class="cui-width-icon"></td>
+                                        <td class="cui-width-icon"></td>
+                                        <td class="cui-width-icon"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- Main table wrapper with class of emp-table should always have an id="table_{something}" -->
+                    <div id="table_my_table_2" class="emp-table">
+                        <header>
+                            <div class="emp-table-title">
+                                <h4>Table 2 - Radio buttons with editable fields</h4>
+                            </div>
+                            <div class="emp-table-options">
+                                <button type="button" class="emp-icon-table-resizer" title="Resize table" tabindex="1">Resize table</button>
+                            </div>
+                        </header>
+                        <div class="emp-table-wrapper">
+                            <table class="cui-sortable">
+                                <thead>
+                                    <tr>
+                                        <th class="cui-align-center emp-table-col-min-width"><span class="cui-hide-from-screen">Use this column's radio buttons to select rows</span></th>
+                                        <th data-sort="date">TRXN Create Date</th>
+                                        <th data-sort="date">TRXN Effective Date</th>
+                                        <th data-sort="alpha" class="emp-width-ind-3"><span class="cui-hide-from-screen">Three-letter indicator</span></th>
+                                        <th data-sort="alpha">DLN</th>
+                                        <th data-sort="alpha">Transaction Description/Reason</th>
+                                        <th data-sort="alpha">Form</th>
+                                        <th data-sort="numeric" class="cui-currency">Amount ($)</th>
+                                        <th class="cui-width-icon"><span class="cui-hide-from-screen">Payment Data</span></th>
+                                        <th class="cui-width-icon"><span class="cui-hide-from-screen">View Image</span></th>
+                                        <th class="cui-width-icon"><span class="cui-hide-from-screen">Delete record</span></th>
+                                        <th class="cui-width-icon"><span class="cui-hide-from-screen">Drill down to more details</span></th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="5"></td>
+                                        <td colspan="2" class="cui-align-right">Total Amount ($):</td>
+                                        <td class="cui-currency">530.51</td>
+                                        <td colspan="4"></td>
+                                    </tr>
+                                </tfoot>
+                                <tbody>
+                                    <tr>
+                                        <td class="cui-align-center emp-table-col-min-width">
+                                            <label class="cui-hide-from-screen" for="rb_table_my_table_2_1">Select this row</label>
+                                            <input type="radio" id="rb_table_my_table_2_1" name="rb_table_my_table_2" value="" tabindex="1">
+                                        </td>
+                                        <td>01/01/2011</td>
+                                        <td>04/01/2011</td>
+                                        <td class="emp-width-ind-3"></td>
+                                        <td><a href="#" title="Go to LP Application" tabindex="1">12345678901234567</a></td>
+                                        <td>Requested FWD - Orig Post</td>
+                                        <td class="cui-no-wrap">CT-3</td>
+                                        <td class="cui-currency">-123,456,789,012,345.67</td>
+                                        <td class="cui-width-icon">
+                                            <button class="emp-icon-dollar-sign" title="Go to payment data" tabindex="1">Go to payment data</button>
+                                        </td>
+                                        <td class="cui-width-icon">
+                                            <button class="emp-icon-view-image" title="View Image" tabindex="1">View image</button>
+                                        </td>
+                                        <td class="cui-width-icon"></td>
+                                        <td class="cui-width-icon">
+                                            <button class="emp-icon-drill-down" title="Drill down to more details" tabindex="1">Drill down to more details</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cui-align-center emp-table-col-min-width">
+                                            <label class="cui-hide-from-screen" for="rb_table_my_table_2_2">Select this row</label>
+                                            <input type="radio" id="rb_table_my_table_2_2" name="rb_table_my_table_2" value="" tabindex="1">
+                                        </td>
+                                        <td>01/01/2012</td>
+                                        <td>04/15/2012</td>
+                                        <td class="emp-width-ind-3"><span class="emp-indicator-3" title="Three-letter indicator hover over text">IND</span></td>
+                                        <td><a href="#" title="Go to LP Application" tabindex="1">PE028148261334289</a></td>
+                                        <td>Extension - Orig Post</td>
+                                        <td class="cui-no-wrap">NYC-210</td>
+                                        <td class="cui-currency">99.15</td>
+                                        <td class="cui-width-icon">
+                                            <button class="emp-icon-dollar-sign" title="Go to payment data" tabindex="1">Go to payment data</button>
+                                        </td>
+                                        <td class="cui-width-icon">
+                                            <button class="emp-icon-view-image" title="View Image" tabindex="1">View image</button>
+                                        </td>
+                                        <td class="cui-width-icon">
+                                            <button class="emp-icon-delete" title="Delete record" tabindex="1">Delete record</button>
+                                        </td>
+                                        <td class="cui-width-icon">
+                                            <button class="emp-icon-drill-down" title="Drill down to more details" tabindex="1">Drill down to more details</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cui-align-center emp-table-col-min-width">
+                                            <label class="cui-hide-from-screen" for="rb_table_my_table_2_3">Select this row</label>
+                                            <input type="radio" id="rb_table_my_table_2_3" name="rb_table_my_table_2" value="" tabindex="1">
+                                        </td>
+                                        <td>01/01/2013</td>
+                                        <td>03/26/2013</td>
+                                        <td class="emp-width-ind-3"></td>
+                                        <td><a href="#" title="Go to LP Application" tabindex="1">STRP20119473824910</a></td>
+                                        <td>Orig Post</td>
+                                        <td class="cui-no-wrap">IT-210</td>
+                                        <td class="cui-currency">
+                                            <label class="cui-hide-from-screen" for="amount_row_3">Amount ($)</label>
+                                            <input type="text" id="amount_row_3" maxlength="23" value="1.35" tabindex="1" />
+                                        </td>
+                                        <td class="cui-width-icon">
+                                            <button class="emp-icon-dollar-sign" title="Go to payment data" tabindex="1">Go to payment data</button>
+                                        </td>
+                                        <td class="cui-width-icon">
+                                            <button class="emp-icon-view-image" title="View Image" tabindex="1">View image</button>
+                                        </td>
+                                        <td class="cui-width-icon">
+                                            <button class="emp-icon-delete" title="Delete record" tabindex="1">Delete record</button>
+                                        </td>
+                                        <td class="cui-width-icon">
+                                            <button class="emp-icon-drill-down" title="Drill down to more details" tabindex="1">Drill down to more details</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cui-align-center emp-table-col-min-width">
+                                            <label class="cui-hide-from-screen" for="rb_table_my_table_2_4">Select this row</label>
+                                            <input type="radio" id="rb_table_my_table_2_4" name="rb_table_my_table_2" value="" tabindex="1">
+                                        </td>
+                                        <td>01/01/2014</td>
+                                        <td>02/12/2014</td>
+                                        <td class="emp-width-ind-3"></td>
+                                        <td><a href="#" title="Go to LP Application" tabindex="1">RPIR20140212115959</a></td>
+                                        <td>Real property tax credit post</td>
+                                        <td class="cui-no-wrap">IT-214</td>
+                                        <td class="cui-currency">
+                                            <label class="cui-hide-from-screen" for="amount_row_4">Amount ($)</label>
+                                            <input type="text" id="amount_row_4" maxlength="23" value="" tabindex="1" />
+                                        </td>
+                                        <td class="cui-width-icon">
+                                            <button class="emp-icon-dollar-sign" title="Go to payment data" tabindex="1">Go to payment data</button>
+                                        </td>
+                                        <td class="cui-width-icon">
+                                            <button class="emp-icon-view-image" title="View Image" tabindex="1">View image</button>
+                                        </td>
+                                        <td class="cui-width-icon">
+                                            <button class="emp-icon-delete" title="Delete record" tabindex="1">Delete record</button>
+                                        </td>
+                                        <td class="cui-width-icon">
+                                            <button class="emp-icon-drill-down" title="Drill down to more details" tabindex="1">Drill down to more details</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+                <!-- Everything below the last section -->
+                <footer>
+                    <div class="cui-row">
+                        <div class="emp-col-full cui-data-left cui-align-right">
+                            <div class="emp-field">
+                                <div class="cui-data">
+                                    <input type="checkbox" id="E_OVERRIDE" tabindex="1">
+                                </div>
+                                <div class="cui-label">
+                                    <label for="E_OVERRIDE">Override</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="emp-button-row">
+                        <div class="emp-col-full cui-align-right">
+                            <button type="button" name="E_BUTTON_RESET" tabindex="1">Reset</button>
+                            <button type="submit" name="E_BUTTON_SUBMIT" class="cui-button-primary" tabindex="1">Submit</button>
+                        </div>
+                    </div>
+                </footer>
+            </form>
+        </main>
+    </div>
+    <script id="require" src="/dist/js/main.js"></script>
+    <script>
+        require(['jquery', 'cui', 'domReady!', 'modal'], function($, cui) {
+            // Ready to go...
+            window.cui = cui;
+
+            $('#notifications').modal({
+                text: 'Here is some modal text',
+                display: {
+                    height: '50%',
+                    width: '50%',
+                    className: 'sweetModal'
+                },
+                overlay: {
+                    supress: true,
+                    opacity: 0.9,
+                    className: 'myOverlay'
+                }
+            });
+
+            $('#E_BUTTON_LIABILITY_PERIOD').modal({
+                text: 'Different Modal Text',
+                display: {
+                    height: '90%',
+                    width: '70%',
+                    className: 'liabilityModal',
+                    id: 'myLiability',
+                    closeButton: false
+                },
+                overlay: {
+                    supress: false,
+                    opacity: 0.3,
+                    className: 'diffOverlay'
+                }
+            });
+
+            $('#E_BUTTON_LIABILITY_PERIOD_1').modal({
+                text: 'Different Modal Text',
+                display: {
+                    height: '30%',
+                    width: '30%',
+                    className: 'anotherModal'
+                },
+                overlay: {
+                    supress: false,
+                    opacity: 0.3,
+                    className: 'someOverlay'
+                }
+            });
+
+            $('.emp-asof-prev').modal();
+
+            $('.emp-asof-next').modal('Text only');
+        });
+    </script>
+</body>
+</html>
