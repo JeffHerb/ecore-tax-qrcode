@@ -97,7 +97,7 @@
 							
 					<div class="cui-row emp-button-row">
 						<div class="emp-col-full button-col emp-button-group cui-align-center">
-							<button type="button" class="cui-button-primary" name=""  title="Scan QR Code">Scan QR Code</button>
+							<button type="button" class="cui-button-primary" name="" id="E_SCAN_QR" title="Scan QR Code">Scan QR Code</button>
 						</div>
 					</div>					
 				</section>
@@ -198,29 +198,34 @@
 		</div>
 	</div>
 	
+	<script src="qrcode.js"></script>
 	<script src="camera.js"></script>
 	<script id="require" src="dist/js/main.js"></script>
 	<script type="text/javascript">
 		require(['jquery', 'emp', 'uimockup', 'domReady!'], function($, emp, uiMockup) {
 			// Elements in the page that need to be turned into a data store
 			
-			window.fwData = {};
-			
-			window.fwData.context = {};
-			
-			window.fwData.context.screen = {};
-			
-			window.fwData.context.screen.id = "QRUP_O1";
+			let dQRCodeButton = document.querySelector('#E_SCAN_QR');
+
+			dQRCodeButton.addEventListener('click', (evt) => {
+
+				if (customElements.get('cui-camera') === undefined) {
+					customElements.define('cui-camera', CAMERA);
+				}
+
+				dNewCamera = document.createElement('cui-camera');
+
+				dNewCamera.setAttribute('for', '#E_SCAN_QR');
+				dNewCamera.setAttribute('mode', 'qr')
+
+				document.body.appendChild(dNewCamera);
+
+			});
 			
 			uiMockup.createPageDataStore(function(results) {
 				emp.init();
 			});
 		});
-        //require(['domReady!'], function() {
-
-            //console.log("page is done");
-
-        //});
 	</script>
 </body>
 
