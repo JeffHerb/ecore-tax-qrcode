@@ -302,7 +302,9 @@ class CAMERA extends HTMLElement {
                         audio: false,
                         video: {
                             mandatory: {
-                                facingMode: "environment",
+                                facingMode: {
+                                    exact: "environment"
+                                },
                                 minWidth: 1280,
                                 minHeight: 720
                             },
