@@ -237,7 +237,74 @@ class CAMERA extends HTMLElement {
 
     }
 
-    connectedCallback() {
+    async connectedCallback() {
+
+        const loopDevices = () => {
+
+            return new Promise((res, rej) => {
+
+                let oVideos = {};
+
+                navigator.mediaDevices.enumerateDevices()
+                    .then((devices) => {
+                        devices.forEach((device) => {
+                            
+                            if (device.kind === "videoinput" && (device.label.indexOf('environment') !== -1 || device.label.indexOf('back') !== -1) ) {
+                                oVideos[device.deviceId] = device
+                            }
+
+                        });
+
+                        res(oVideos);
+                    })
+                    .catch((err) => {
+                        console.error(`${err.name}: ${err.message}`);
+                    });
+
+            })
+
+            //let devices = await navigator.mediaDevices.enumerateDevices()
+                                
+            // return devices;
+        }
+
+        const handlePhoto = (evt) => {
+
+            this.state.ctx.drawImage(this.state.dVideo, 0, 0, this.state.videoWidth, this.state.videoHeight);
+
+            this.state.dPhotoButton.classList.add('hidden');
+            this.state.dPhotoAcceptControls.classList.remove('hidden');
+        }
+
+        const handleTakeAnother = (evt) => {
+
+            this.state.ctx.clearRect(0, 0, this.state.videoWidth, this.state.videoHeight);
+
+            this.state.dPhotoButton.classList.remove('hidden');
+            this.state.dPhotoAcceptControls.classList.add('hidden');
+        }
+
+        const handleAcceptPhoto = (evt) => {
+
+            if (this.state.stStream.active) {
+                this.state.stStream.getTracks()[0].stop();
+            }
+
+            document.body.removeChild(this);
+        }
+
+        const handleCancel = (evt) => {
+
+            if (this.state.stStream.active) {
+                this.state.stStream.getTracks()[0].stop();
+            }
+            
+            document.body.removeChild(this);
+        }
+
+        let oVideoDevices = await loopDevices();
+
+        console.log(oVideoDevices);
 
         this.shadowRoot.innerHTML = `${this.style}${this.template}`;
         
@@ -307,9 +374,7 @@ class CAMERA extends HTMLElement {
                                 },
                                 minWidth: 1280,
                                 minHeight: 720
-                            },
-                            // width: { ideal: 4096 },
-                            // height: { ideal: 2160 } 
+                            }
                         } 
                     }
 
@@ -426,7 +491,7 @@ class CAMERA extends HTMLElement {
 
                     };
 
-                    this.state.dVideo.addEventListener("loadedmetadata", setupVideo.bind(this));
+                    //this.state.dVideo.addEventListener("loadedmetadata", setupVideo.bind(this));
 
                     navigator.mediaDevices
                         .getUserMedia(constraints)
@@ -467,40 +532,6 @@ class CAMERA extends HTMLElement {
         else {
 
             this.state.sMode = "photo";
-        }
-
-        const handlePhoto = (evt) => {
-
-            this.state.ctx.drawImage(this.state.dVideo, 0, 0, this.state.videoWidth, this.state.videoHeight);
-
-            this.state.dPhotoButton.classList.add('hidden');
-            this.state.dPhotoAcceptControls.classList.remove('hidden');
-        }
-
-        const handleTakeAnother = (evt) => {
-
-            this.state.ctx.clearRect(0, 0, this.state.videoWidth, this.state.videoHeight);
-
-            this.state.dPhotoButton.classList.remove('hidden');
-            this.state.dPhotoAcceptControls.classList.add('hidden');
-        }
-
-        const handleAcceptPhoto = (evt) => {
-
-            if (this.state.stStream.active) {
-                this.state.stStream.getTracks()[0].stop();
-            }
-
-            document.body.removeChild(this);
-        }
-
-        const handleCancel = (evt) => {
-
-            if (this.state.stStream.active) {
-                this.state.stStream.getTracks()[0].stop();
-            }
-            
-            document.body.removeChild(this);
         }
 
         this.state.dCancelCamera.addEventListener('click', handleCancel.bind(this), false);
