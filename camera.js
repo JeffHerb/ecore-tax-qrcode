@@ -8,6 +8,7 @@ class CAMERA extends HTMLElement {
         this.state = {
             stStream: null,
             bEnabled: false,
+            bQrReady: false,
             sToggleSelector: null,
             dToggleControl: null,
             dRootContainer: null,
@@ -15,6 +16,8 @@ class CAMERA extends HTMLElement {
             dCanvas: null,
             dOutput: null
         };
+
+        this.qr = null;
     }
 
     get style() {
@@ -50,6 +53,7 @@ class CAMERA extends HTMLElement {
                 width: 40px;
                 top: 20px;
                 right: 20px;
+                z-index: 11000;
             }
 
             :host .camera-container.open #cancelCamera:before,
@@ -83,7 +87,14 @@ class CAMERA extends HTMLElement {
             :host #canvas,
             :host #image-wrapper {
                 position: absolute;
-                z-index: 9990
+                z-index: 9990;
+                width: 100%;
+            }
+
+            :host #video {
+                height: auto;
+                object-fit: cover;
+                width: 100%;
             }
 
             :host #image-wrapper {
@@ -193,6 +204,7 @@ class CAMERA extends HTMLElement {
                         <div class="br"></div>
                         <div class="bl"></div>
                     </div>
+                    <canvas id="temp-canvas"></canvas>
                 </div>
                 <div id="picture-control-row" class="hidden">
                     <button type="button" id="take-photo" class="take-photo" title="Take Photo"></button>
@@ -248,8 +260,11 @@ class CAMERA extends HTMLElement {
                 navigator.mediaDevices.enumerateDevices()
                     .then((devices) => {
                         devices.forEach((device) => {
+
+                            console.log(device);
                             
-                            if (device.kind === "videoinput" && (device.label.indexOf('environment') !== -1 || device.label.indexOf('back') !== -1) ) {
+                            // Pull out all of the video input that are 
+                            if (device.kind === "videoinput" && (device.label.indexOf('back') !== -1 || device.label.indexOf('environment') !== -1 )){
                                 oVideos[device.deviceId] = device
                             }
 
@@ -268,9 +283,21 @@ class CAMERA extends HTMLElement {
             // return devices;
         }
 
+        const closeModal = (evt) => {
+            
+            if (this.state.stStream.active) {
+                this.state.stStream.getTracks()[0].stop();
+            }
+
+            this.state.bEnabled = false;
+
+            this.state.dRootContainer.classList.remove('open');
+
+        }
+
         const handlePhoto = (evt) => {
 
-            this.state.ctx.drawImage(this.state.dVideo, 0, 0, this.state.videoWidth, this.state.videoHeight);
+            this.state.ctx.drawImage(this.state.dVideo, 0, 0, this.state.iVideoWidth, this.state.iVideoHeight);
 
             this.state.dPhotoButton.classList.add('hidden');
             this.state.dPhotoAcceptControls.classList.remove('hidden');
@@ -278,7 +305,7 @@ class CAMERA extends HTMLElement {
 
         const handleTakeAnother = (evt) => {
 
-            this.state.ctx.clearRect(0, 0, this.state.videoWidth, this.state.videoHeight);
+            this.state.ctx.clearRect(0, 0, this.state.iVideoWidth, this.state.iVideoHeight);
 
             this.state.dPhotoButton.classList.remove('hidden');
             this.state.dPhotoAcceptControls.classList.add('hidden');
@@ -286,34 +313,177 @@ class CAMERA extends HTMLElement {
 
         const handleAcceptPhoto = (evt) => {
 
-            if (this.state.stStream.active) {
-                this.state.stStream.getTracks()[0].stop();
-            }
+            closeModal();
 
-            document.body.removeChild(this);
+            console.log("Other photo stuff");
         }
 
-        const handleCancel = (evt) => {
+        const fCopyImageToCanvase = (dSource, dTargetCTX, iLeft, iTop, iWidth, iHeight) => {
 
-            if (this.state.stStream.active) {
-                this.state.stStream.getTracks()[0].stop();
+            dTargetCTX.drawImage(dSource, iLeft, iTop, iWidth, iHeight);
+        }
+
+        const fCopyCanvasToCanvase = (dSource, iSourceLeft = 0, iSourceTop = 0, dTargetCTX, iDestLeft = 0, iDestTop = 0, iWidth, iHeight) => {
+
+            console.log("Canvase to canvas");
+
+            console.log(iSourceLeft, iSourceTop, iWidth, iHeight, iDestLeft, iDestTop, iWidth, iHeight)
+
+            dTargetCTX.drawImage(dSource, 
+                iSourceLeft,
+                iSourceTop,
+                iWidth,
+                iHeight,
+                iDestLeft,
+                iDestTop,
+                iWidth, 
+                iHeight);
+        }
+
+        this.state.iQRImage = 0;
+
+        const fQRCodeCheck = () => {
+
+            if (this.state.bEnabled && this.state.bQrReady) {
+
+                // Copy the video image to the regular canvas
+                fCopyImageToCanvase(this.state.dVideo, this.state.ctx, 0, 0, this.state.iVideoWidth, this.state.iVideoHeight);
+
+                // Now take the image from the regular canvas and crop out the scan image
+                console.log(`Height:${this.state.iVideoHeight} x Width:${this.state.iVideoWidth}`);
+                console.log(`Left Offset:${this.state.videoImageOffsetLeft} x Top Offset:${this.state.videoImageOffsetTop}`)
+                console.log(`QR Code square:${this.state.iSquareSize}`);
+
+                setTimeout(async () => {
+
+                        fCopyCanvasToCanvase(
+                            this.state.dCanvas,
+                            this.state.videoImageOffsetLeft,
+                            this.state.videoImageOffsetTop,
+                            this.state.ctxTemp,
+                            0,
+                            0,
+                            this.state.iSquareSize,
+                            this.state.iSquareSize);
+
+                        let vQRImage = this.state.dTempCanvas.toDataURL("image/png");
+
+                        await this.qr.decodeFromImage(vQRImage).then((res) => {
+
+                            if (res) {
+                                
+                                let sPin = res.data.split("?")[1].split('=')[1];
+
+                                console.log(sPin);
+    
+                                if (this.state.dOutput && this.state.dOutput.nodeName === "INPUT") {
+                                    this.state.dOutput.value = sPin;
+                                }
+    
+                                this.state.bEnabled = false;
+    
+                                closeModal();
+                            }
+                            else {
+    
+                                setTimeout(fQRCodeCheck.bind(this), 500);
+                            }
+                        });
+
+                }, 100);
+
             }
-            
-            document.body.removeChild(this);
+
+        };
+
+        const fScaleWrapper = () => {
+
+            requestAnimationFrame(() => {
+
+                let iVideoWidth = this.state.dVideo.offsetWidth;
+                let iVideoHeight = this.state.dVideo.offsetHeight; 
+                
+                this.state.dCanvas.width = this.state.iVideoWidth;
+                this.state.dCanvas.height = this.state.iVideoHeight;
+
+                // Save off the scaled size
+                this.state.iVideoWidth = iVideoWidth;
+                this.state.iVideoHeight = iVideoHeight;
+
+                // Determine what the qr code square size would be (even if its not used)
+                let iSquareSize = (iVideoHeight > iVideoWidth) ? iVideoWidth : iVideoHeight;
+
+                if (iSquareSize < 150) {
+                    iSquareSize = 150;
+                }
+                else if (iSquareSize >= 500) {
+                    iSquareSize = 500;
+                }
+
+                this.state.iSquareSize = iSquareSize - 100;
+
+                // this.state.dImageWrapper.style.width = `${iVideoWidth}px`;
+                // this.state.dImageWrapper.style.height = `${iVideoHeight}px`;
+
+                this.state.dCanvas.width = iVideoWidth;
+                this.state.dCanvas.height = iVideoHeight;
+
+                if (this.state.sMode === "qr") {
+
+                    this.qr = new QrcodeDecoder();
+
+                    // Change the QR code sights
+                    this.state.dQRCodeSights.style.width = `${this.state.iSquareSize}px`;
+                    this.state.dQRCodeSights.style.height = `${this.state.iSquareSize}px`;
+
+                    this.state.dTempCanvas.width = this.state.iSquareSize;
+                    this.state.dTempCanvas.height = this.state.iSquareSize;
+    
+                    this.state.videoImageOffsetLeft = (iVideoWidth - this.state.iSquareSize) / 2;
+                    this.state.videoImageOffsetTop = (iVideoHeight - this.state.iSquareSize) / 2;
+
+                    this.state.bQrReady = true;
+
+                    requestAnimationFrame(() => {
+
+                        setTimeout(fQRCodeCheck.bind(this), 500);
+                    });
+                }
+
+            });
+
+        }
+
+        const handleResize = (evt) => {
+
+            console.log(this);
+
+            if (this.state.bEnabled) {
+
+                console.log("Resize occured");
+
+            }
+
         }
 
         let oVideoDevices = await loopDevices();
 
         console.log(oVideoDevices);
 
+        let dVideoInfo = document.getElementById('video-info');
+
+        dVideoInfo.innerHTML = JSON.stringify(oVideoDevices, null, 4);
+
         this.shadowRoot.innerHTML = `${this.style}${this.template}`;
         
         this.state.dRootContainer = this.shadowRoot.querySelector('.camera-container');
         this.state.dVideo = this.shadowRoot.querySelector('video#video');
         this.state.dCanvas = this.shadowRoot.querySelector('canvas#canvas');
-        this.state.iQRCodeSquareSize = 500;
-
         this.state.ctx = this.state.dCanvas.getContext('2d', { willReadFrequently: true });
+
+        this.state.dTempCanvas = this.shadowRoot.querySelector('canvas#temp-canvas');
+        this.state.ctxTemp = this.state.dTempCanvas.getContext('2d');
+
         this.state.dPhotoControlRow = this.shadowRoot.querySelector(`#picture-control-row`);
         this.state.dPhotoButton = this.shadowRoot.querySelector(`#take-photo`);
         this.state.dPhotoAcceptControls = this.shadowRoot.querySelector('#accept-controls');
@@ -324,8 +494,8 @@ class CAMERA extends HTMLElement {
         this.state.dCancelCamera = this.shadowRoot.querySelector('#cancelCamera');
         this.state.fQRTimeout = null;
 
-        this.state.videoWidth = null;
-        this.state.videoHeight = null;
+        this.state.iVideoWidth = null;
+        this.state.iVideoHeight = null;
         
         if (this.getAttribute("for")) {
             
@@ -361,6 +531,8 @@ class CAMERA extends HTMLElement {
                         this.state.stStream.getTracks()[0].stop();
                     }
 
+                    this.state.bEnabled = false;
+
                     this.state.dRootContainer.classList.remove('open');
                 }
                 else {
@@ -369,138 +541,61 @@ class CAMERA extends HTMLElement {
                         audio: false,
                         video: {
                             mandatory: {
-                                facingMode: {
-                                    exact: "environment"
-                                },
                                 minWidth: 1280,
                                 minHeight: 720
                             }
                         } 
                     }
 
-                    const setupVideo = (evt) => {
+                    window.addEventListener('resize', (evt) => {
 
-                        this.state.videoWidth = evt.target.videoWidth;
-                        this.state.videoHeight = evt.target.videoHeight;
-
-                        this.state.dImageWrapper.style.width = this.state.videoWidth + 'px';
-                        this.state.dImageWrapper.style.height = this.state.videoHeight + 'px';
-
-                        this.state.dVideo.width = this.state.videoWidth;
-                        this.state.dCanvas.width = this.state.videoWidth;
-                        this.state.dVideo.height = this.state.videoHeight;
-                        this.state.dCanvas.height = this.state.videoHeight;
-
-                        this.state.dPhotoControlRow.style.top = `${(this.state.dVideo.height /2) - 37}px`;
-
-                        if (this.state.sMode === "qr") {
-    
-                            this.state.iQRCropStartX = ((this.state.videoWidth - this.state.iQRCodeSquareSize) / 2 );
-                            this.state.iQRCropStartY = ((this.state.videoHeight - this.state.iQRCodeSquareSize) / 2 );
-
-                            let dTempCanvas = document.createElement('canvas');
-                            dTempCanvas.height = 500;
-                            dTempCanvas.width = 500;
-                            dTempCanvas.id = "temp-canvas";
-
-                            dTempCanvas.style.position = "absolute";
-
-                            this.state.dTempCanvas = dTempCanvas;
-                            this.state.dTempCXT = dTempCanvas.getContext('2d');
-
-                            this.state.dImageWrapper.appendChild(dTempCanvas);
-
-                            // Repeating function for qr code decoding
-                            const fQRCodeCheck = () => {
-
-                                const check =() => {
-                                    const pixelBuffer = new Uint32Array(
-                                        this.state.dTempCXT.getImageData(0, 0, 500, 500).data.buffer
-                                    );
-
-                                    return !pixelBuffer.some(color => color !== 0);
-                                }
-
-                                if (this.state.bEnabled) {
-
-                                    this.state.ctx.drawImage(this.state.dVideo, 0, 0, this.state.videoWidth, this.state.videoHeight);
-
-                                    this.state.dTempCXT.beginPath();
-                                    this.state.dTempCXT.rect(
-                                        10,
-                                        10,
-                                        10,
-                                        10
-                                    );
-                                    this.state.dTempCXT.fillStyle = '#828387';
-                                    this.state.dTempCXT.fill();
-                                    this.state.dTempCXT.closePath();
-
-                                    setTimeout(async () => {
-
-
-                                        this.state.dTempCXT.drawImage(
-                                            this.state.dCanvas, 
-                                            this.state.iQRCropStartX, 
-                                            this.state.iQRCropStartY, 
-                                            this.state.iQRCodeSquareSize, 
-                                            this.state.iQRCodeSquareSize, 
-                                            0, 
-                                            0, 
-                                            this.state.iQRCodeSquareSize, 
-                                            this.state.iQRCodeSquareSize);
-
-                                        let vQRImage = this.state.dTempCanvas.toDataURL("image/png");
-
-                                        await qr.decodeFromImage(vQRImage).then((res) => {
-
-                                            if (res) {
-
-                                                //console.log(res)
-                                                
-                                                let sPin = res.data.split("?")[1].split('=')[1];
-
-                                                if (this.state.dOutput && this.state.dOutput.nodeName === "INPUT") {
-                                                    this.state.dOutput.value = sPin;
-                                                }
-
-                                                this.state.bEnabled = false;
-
-                                                this.state.dRootContainer.classList.remove('open');
-
-                                                this.state.stStream.getTracks().forEach(function(track) {
-                                                    track.stop();
-                                                });
-                                            }
-                                            else {
-    
-                                                setTimeout(fQRCodeCheck.bind(this), 500);
-                                            }
-                                        });
-
-
-                                    }, 100);
-
-                                }
-                
-                            };
-                
-                
-                            setTimeout(fQRCodeCheck.bind(this), 500);
-                        }
-
-                    };
-
-                    //this.state.dVideo.addEventListener("loadedmetadata", setupVideo.bind(this));
+                        requestAnimationFrame(() => {
+                            fScaleWrapper();
+                        })
+            
+                    }, false);
 
                     navigator.mediaDevices
-                        .getUserMedia(constraints)
+                        .getUserMedia({
+                            ...constraints,
+                            video: { 
+                                deviceId: Object.keys(oVideoDevices)[1] 
+                            }
+                        })
                         .then((stream) => {
+
+                            this.state.dVideo.addEventListener('play', () => {
+
+                                this.state.dCancelCamera.addEventListener('click', closeModal.bind(this), false);
+                                document.body.addEventListener('resize', handleResize.bind(this), false);
+
+                                if (this.state.sMode === "photo") {
+
+                                    this.state.dPhotoControlRow.classList.remove('hidden');
+                        
+                                    this.state.dPhotoButton.addEventListener('click', handlePhoto.bind(this), false);
+                                    this.state.dAcceptPhotoButton.addEventListener('click', handleAcceptPhoto.bind(this), false);
+                                    this.state.dTakeAnotherButton.addEventListener('click', handleTakeAnother.bind(this), false);
+                                    
+                                }
+                                else {
+                        
+                                    this.state.dQRCodeSights.classList.remove('hidden');
+                                    this.state.dCanvas.classList.add("hidden");
+                                }
+
+                                setTimeout(() => {
+                                    requestAnimationFrame(() => {
+                                        fScaleWrapper();
+                                    })
+                                }, 500)
+                            })
 
                             this.state.stStream = stream;
 
                             this.state.dVideo.srcObject = stream;
                             this.state.dVideo.play();
+
                         })
                         .catch((err) => {
                             console.error(`An error occurred: ${err}`);
@@ -532,26 +627,6 @@ class CAMERA extends HTMLElement {
         else {
 
             this.state.sMode = "photo";
-        }
-
-        this.state.dCancelCamera.addEventListener('click', handleCancel.bind(this), false);
-
-        if (this.state.sMode === "photo") {
-
-            this.state.dPhotoControlRow.classList.remove('hidden');
-
-            this.state.dPhotoButton.addEventListener('click', handlePhoto.bind(this), false);
-            this.state.dAcceptPhotoButton.addEventListener('click', handleAcceptPhoto.bind(this), false);
-            this.state.dTakeAnotherButton.addEventListener('click', handleTakeAnother.bind(this), false);
-            
-        }
-        else {
-
-            this.state.dQRCodeSights.classList.remove('hidden');
-            this.state.dCanvas.classList.add("hidden");
-            
-            var qr = new QrcodeDecoder();
-
         }
 
     }
