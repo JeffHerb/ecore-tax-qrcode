@@ -45,12 +45,15 @@ class CAMERA extends HTMLElement {
             }
 
             :host .camera-container.open .camera-controls {
+                background: rgba(0, 0, 0, 0.4);
                 display:flex;
                 justify-content: center;
+                left: 0;
+                min-height: 60px;
                 position: absolute;
                 top: 0;
-                left: 0;
                 width: 100%;
+                z-index: 12000;
             }
 
             :host .camera-container.open .camera-controls #switchCamera,
@@ -60,7 +63,6 @@ class CAMERA extends HTMLElement {
                 border: 0;
                 cursor: pointer;
                 height: 40px;
-                right: 0;
                 width: 40px;
             }
 
@@ -69,27 +71,33 @@ class CAMERA extends HTMLElement {
             }
 
             :host .camera-container.open .camera-controls #switchCamera svg {
-                height: 40px;
-                width: 40px;
+                height: 60px;
+                width: 60px;
+            }
+
+            :host .camera-container.open .camera-controls #cancelCamera {
+                right: 0;
+                margin-right: 10px;
+                margin-top: 10px;
             }
 
             :host .camera-container.open .camera-controls #cancelCamera:before,
             :host .camera-container.open .camera-controls #cancelCamera:after {
-                position: absolute;
-                left: 15px;
-                content: ' ';
-                height: 33px;
-                width: 2px;
-                background-color: #FFF;
-                }
+                    background-color: #FFF;
+                    content: ' ';
+                    height: 33px;
+                    position: absolute;
+                    top: 4px;
+                    width: 2px;
+            }
 
-                :host .camera-container.open #cancelCamera:before {
+            :host .camera-container.open #cancelCamera:before {
                 transform: rotate(45deg);
-                }
+            }
 
-                :host .camera-container.open #cancelCamera:after {
+            :host .camera-container.open #cancelCamera:after {
                 transform: rotate(-45deg);
-                }
+            }
 
             :host .camera-container.open .camera-controls #switchCamera {
                 border: 0;
@@ -128,25 +136,32 @@ class CAMERA extends HTMLElement {
             }
 
             :host #picture-control-row {
-                display:flex;
+                background: rgba(0, 0, 0, 0.5);
+                bottom: 0;
+                display: flex;
                 margin-bottom: 10px;
-                position: relative;
+                position: absolute;
+                z-index: 11000;
+                width: 100%;
+                justify-content: center;
+                padding-top: 10px;
+                padding-bottom: 10px;
             }
 
             :host #picture-control-row button {
                 background: #FFF;
-                border-radius: 75px;
+                border-radius: 50px;
                 cursor: pointer;
                 display: inline-block;
-                height: 75px;
-                width: 75px;
+                height: 50px;
+                width: 50px;
                 z-index: 11000;
             }
 
             :host #picture-control-row {
                 display: flex;
                 margin-bottom: 10px;
-                position: relative;
+                position: absolute;
                 z-index: 11000;
             }
 
@@ -219,7 +234,7 @@ class CAMERA extends HTMLElement {
         return `<div class="camera-container">
             <div class="flex-container">
                 <div class="camera-controls">
-                    <button id="switchCamera" title="switch-camera">
+                    <button id="switchCamera" class="hidden" title="switch-camera">
                         <svg width="700pt" height="700pt" viewBox="0 0 700 700" xmlns="http://www.w3.org/2000/svg"><path d="M350 284.45c-32.93 0-59.754 26.824-59.754 59.754 0 32.93 26.824 59.754 59.754 59.754 32.984 0 59.754-26.824 59.754-59.754 0-32.93-26.824-59.754-59.754-59.754zm0 102.7c-23.688 0-42.953-19.266-42.953-42.953 0-23.687 19.266-42.953 42.953-42.953 23.687 0 42.953 19.266 42.953 42.953 0 23.687-19.266 42.953-42.953 42.953z" style="fill:#fff"/><path d="M449.46 250.34h-31.527l-8.176-13.496c-6.328-10.473-17.809-16.969-30.07-16.969h-59.363c-12.207 0-23.688 6.496-30.07 16.969l-8.176 13.496h-31.586c-17.137 0-31.078 13.945-31.078 31.137v125.44c0 17.191 13.945 31.137 31.078 31.137h198.97c17.191 0 31.137-14 31.137-31.137v-125.44c0-17.137-13.945-31.137-31.137-31.137zm14.336 156.57c0 7.894-6.441 14.336-14.336 14.336l-198.97.004c-7.895 0-14.281-6.441-14.281-14.336v-125.44c0-7.894 6.441-14.336 14.281-14.336h41.047l13.047-21.617c3.305-5.488 9.352-8.848 15.68-8.848h59.305c6.383 0 12.375 3.36 15.68 8.848l13.105 21.617h40.992c7.895 0 14.336 6.441 14.336 14.336v125.44zM564.2 378.02c-5.152-6.047-11.031-11.199-17.305-15.566-6.215-4.48-12.77-8.23-19.488-11.535-13.441-6.61-27.441-11.594-41.664-15.512 13.609 5.656 26.77 12.32 38.863 20.328 6.047 3.977 11.816 8.398 17.023 13.215 5.266 4.762 9.91 10.078 13.664 15.793 3.754 5.656 6.441 11.762 7.617 17.977 1.176 6.16.672 12.375-1.23 18.09-3.754 11.535-13.16 21.168-23.97 28.84l-8.96 6.441-21.617-9.574v28.617h64.625l-19.375-8.566c5.77-5.375 11.145-11.367 15.68-18.2 4.594-7 8.344-14.894 9.91-23.52 1.625-8.566 1.121-17.585-1.512-25.647-2.683-8.133-7.11-15.188-12.262-21.18zM158.43 441.58c-5.266-4.762-9.91-10.078-13.664-15.793-3.754-5.656-6.441-11.762-7.617-17.977-1.176-6.16-.672-12.375 1.23-18.09 3.754-11.535 13.16-21.168 23.97-28.84l8.96-6.441 21.617 9.574v-28.617l-64.625.008 19.375 8.566c-5.77 5.375-11.145 11.367-15.68 18.2-4.594 7-8.344 14.894-9.91 23.52-1.684 8.628-1.18 17.59 1.512 25.651 2.633 8.121 7.054 15.176 12.207 21.168 5.152 6.047 11.03 11.2 17.305 15.566 6.215 4.48 12.77 8.23 19.488 11.535 13.44 6.61 27.44 11.594 41.664 15.512-13.61-5.656-26.77-12.32-38.863-20.328-6.051-4.027-11.82-8.398-16.97-13.215z" style="fill:#fff"/></svg>
                     </button>
                     <button id="cancelCamera" title="close-camera"></button>
@@ -280,36 +295,39 @@ class CAMERA extends HTMLElement {
 
     async connectedCallback() {
 
-        const loopDevices = () => {
+        const fLoopDevices = () => {
 
             return new Promise((res, rej) => {
 
-                let oVideos = {};
+                let aoPreferredCamera = [];
+                let aoOtherCameras = [];
 
+                // Loop over all of the camera options
                 navigator.mediaDevices.enumerateDevices()
                     .then((devices) => {
                         devices.forEach((device) => {
-
-                            console.log(device);
                             
                             // Pull out all of the video input that are 
-                            if (device.kind === "videoinput" && (device.label.indexOf('back') !== -1 || device.label.indexOf('environment') !== -1 )){
-                                oVideos[device.deviceId] = device
+                            if (device.kind === "videoinput") {
+                                
+                                // Check to see if the label indicates which way the camera faces
+                                if (device.label.indexOf('back') !== -1 || device.label.indexOf('environment') !== -1 ) {
+                                    aoPreferredCamera.push(device);
+                                }
+                                else {
+                                    aoOtherCameras.push(device);
+                                }
                             }
 
                         });
 
-                        res(oVideos);
+                        res([].concat(aoPreferredCamera, aoOtherCameras));
                     })
                     .catch((err) => {
                         console.error(`${err.name}: ${err.message}`);
                     });
 
             })
-
-            //let devices = await navigator.mediaDevices.enumerateDevices()
-                                
-            // return devices;
         }
 
         const closeModal = (evt) => {
@@ -344,7 +362,50 @@ class CAMERA extends HTMLElement {
 
             closeModal();
 
-            console.log("Other photo stuff");
+        }
+
+        const fHandleCameraSwitch = (evt) => {
+
+            if ((this.state.iSetCamera + 1) === this.state.aoCameras.length) {
+                this.state.iSetCamera = 0;
+            }
+            else {
+                this.state.iSetCamera += 1;
+            }
+
+            // Stop the currenrt camera
+            if (this.state.stStream.active) {
+                this.state.stStream.getTracks()[0].stop();
+            }
+
+            navigator.mediaDevices
+                .getUserMedia({
+                    ...this.state.oVideoContraints,
+                    video: { 
+                        deviceId: this.state.aoCameras[this.state.iSetCamera].deviceId
+                    }
+                })
+                .then((stream) => {
+
+                    this.state.dVideo.addEventListener('play', () => {
+
+                        setTimeout(() => {
+                            requestAnimationFrame(() => {
+                                fScaleWrapper();
+                            })
+                        }, 500)
+                    })
+
+                    this.state.stStream = stream;
+
+                    this.state.dVideo.srcObject = stream;
+                    this.state.dVideo.play();
+
+                })
+                .catch((err) => {
+                    console.error(`An error occurred: ${err}`);
+                });
+
         }
 
         const fCopyImageToCanvase = (dSource, dTargetCTX, iLeft, iTop, iWidth, iHeight) => {
@@ -353,10 +414,6 @@ class CAMERA extends HTMLElement {
         }
 
         const fCopyCanvasToCanvase = (dSource, iSourceLeft = 0, iSourceTop = 0, dTargetCTX, iDestLeft = 0, iDestTop = 0, iWidth, iHeight) => {
-
-            console.log("Canvase to canvas");
-
-            console.log(iSourceLeft, iSourceTop, iWidth, iHeight, iDestLeft, iDestTop, iWidth, iHeight)
 
             dTargetCTX.drawImage(dSource, 
                 iSourceLeft,
@@ -378,10 +435,6 @@ class CAMERA extends HTMLElement {
                 // Copy the video image to the regular canvas
                 fCopyImageToCanvase(this.state.dVideo, this.state.ctx, 0, 0, this.state.iVideoWidth, this.state.iVideoHeight);
 
-                // Now take the image from the regular canvas and crop out the scan image
-                console.log(`Height:${this.state.iVideoHeight} x Width:${this.state.iVideoWidth}`);
-                console.log(`Left Offset:${this.state.videoImageOffsetLeft} x Top Offset:${this.state.videoImageOffsetTop}`)
-                console.log(`QR Code square:${this.state.iSquareSize}`);
 
                 setTimeout(async () => {
 
@@ -451,9 +504,6 @@ class CAMERA extends HTMLElement {
 
                 this.state.iSquareSize = iSquareSize - 100;
 
-                // this.state.dImageWrapper.style.width = `${iVideoWidth}px`;
-                // this.state.dImageWrapper.style.height = `${iVideoHeight}px`;
-
                 this.state.dCanvas.width = iVideoWidth;
                 this.state.dCanvas.height = iVideoHeight;
 
@@ -485,8 +535,6 @@ class CAMERA extends HTMLElement {
 
         const handleResize = (evt) => {
 
-            console.log(this);
-
             if (this.state.bEnabled) {
 
                 console.log("Resize occured");
@@ -494,14 +542,6 @@ class CAMERA extends HTMLElement {
             }
 
         }
-
-        let oVideoDevices = await loopDevices();
-
-        console.log(oVideoDevices);
-
-        let dVideoInfo = document.getElementById('video-info');
-
-        dVideoInfo.innerHTML = JSON.stringify(oVideoDevices, null, 4);
 
         this.shadowRoot.innerHTML = `${this.style}${this.template}`;
         
@@ -521,10 +561,24 @@ class CAMERA extends HTMLElement {
         this.state.dQRCodeSights = this.shadowRoot.querySelector('#qr-code-sights');
         this.state.dImageWrapper = this.shadowRoot.querySelector('#image-wrapper');
         this.state.dCancelCamera = this.shadowRoot.querySelector('#cancelCamera');
+        this.state.dSwitchCamera = this.shadowRoot.querySelector('#switchCamera');
         this.state.fQRTimeout = null;
+
+        this.state.aoCameras = await fLoopDevices();
+        this.state.iSetCamera = 0;
 
         this.state.iVideoWidth = null;
         this.state.iVideoHeight = null;
+
+        this.state.oVideoContraints = {
+            audio: false,
+            video: {
+                mandatory: {
+                    minWidth: 1280,
+                    minHeight: 720
+                }
+            } 
+        }
         
         if (this.getAttribute("for")) {
             
@@ -566,16 +620,6 @@ class CAMERA extends HTMLElement {
                 }
                 else {
 
-                    var constraints = {
-                        audio: false,
-                        video: {
-                            mandatory: {
-                                minWidth: 1280,
-                                minHeight: 720
-                            }
-                        } 
-                    }
-
                     window.addEventListener('resize', (evt) => {
 
                         requestAnimationFrame(() => {
@@ -584,34 +628,46 @@ class CAMERA extends HTMLElement {
             
                     }, false);
 
+                    if (this.state.aoCameras.length && this.state.aoCameras.length > 1) {
+                        this.state.dSwitchCamera.classList.remove("hidden");
+                    }
+
+                    // Setup close camera button
+                    this.state.dCancelCamera.addEventListener('click', closeModal.bind(this), false);
+
+                    // Setup switch camera button {
+                    if (this.state.aoCameras.length && this.state.aoCameras.length > 1) {
+
+                        this.state.dSwitchCamera.addEventListener('click', fHandleCameraSwitch.bind(this), false);
+                    }
+
+                    document.body.addEventListener('resize', handleResize.bind(this), false);
+
+                    if (this.state.sMode === "photo") {
+
+                        this.state.dPhotoControlRow.classList.remove('hidden');
+            
+                        this.state.dPhotoButton.addEventListener('click', handlePhoto.bind(this), false);
+                        this.state.dAcceptPhotoButton.addEventListener('click', handleAcceptPhoto.bind(this), false);
+                        this.state.dTakeAnotherButton.addEventListener('click', handleTakeAnother.bind(this), false);
+                        
+                    }
+                    else {
+            
+                        this.state.dQRCodeSights.classList.remove('hidden');
+                        this.state.dCanvas.classList.add("hidden");
+                    }
+
                     navigator.mediaDevices
                         .getUserMedia({
-                            ...constraints,
+                            ...this.state.oVideoContraints,
                             video: { 
-                                deviceId: Object.keys(oVideoDevices)[1] 
+                                deviceId: this.state.aoCameras[this.state.iSetCamera].deviceId
                             }
                         })
                         .then((stream) => {
 
                             this.state.dVideo.addEventListener('play', () => {
-
-                                this.state.dCancelCamera.addEventListener('click', closeModal.bind(this), false);
-                                document.body.addEventListener('resize', handleResize.bind(this), false);
-
-                                if (this.state.sMode === "photo") {
-
-                                    this.state.dPhotoControlRow.classList.remove('hidden');
-                        
-                                    this.state.dPhotoButton.addEventListener('click', handlePhoto.bind(this), false);
-                                    this.state.dAcceptPhotoButton.addEventListener('click', handleAcceptPhoto.bind(this), false);
-                                    this.state.dTakeAnotherButton.addEventListener('click', handleTakeAnother.bind(this), false);
-                                    
-                                }
-                                else {
-                        
-                                    this.state.dQRCodeSights.classList.remove('hidden');
-                                    this.state.dCanvas.classList.add("hidden");
-                                }
 
                                 setTimeout(() => {
                                     requestAnimationFrame(() => {
